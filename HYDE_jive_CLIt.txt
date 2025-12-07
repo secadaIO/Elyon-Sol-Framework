@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# jive — Public Demo CLI for the Elyon-Sol Framework (Concept Edition)
+# This version contains NO operational logic, NO governance systems,
+# and NO real-world functionality. It is safe for GitHub publication.
+
+set -euo pipefail
+
+VERSION="v1.0-public"
+DATE="2025-12-07"
+
+banner() {
+  cat <<'EOF'
+
+      ✦   ELYON-SOL — Public Concept CLI   ✦
+        This is a demonstration interface.
+        No operational functionality included.
+
+EOF
+}
+
+case "${1:-}" in
+  help|--help|"")
+    banner
+    cat <<EOF
+Available Commands (Demo Only):
+  help        → show this help screen
+  version     → display version info
+  about       → high-level Elyon-Sol overview
+EOF
+    ;;
+
+  version)
+    banner
+    echo "Public Demo Version : $VERSION"
+    echo "Date                : $DATE"
+    echo "Purpose             : Conceptual demonstration only"
+    ;;
+
+  about)
+    banner
+    echo "Elyon-Sol Public Edition:"
+    echo " - Conceptual AI governance framework"
+    echo " - Focuses on transparency, safety, and oversight"
+    echo " - No internal mechanisms included in public release"
+    echo " - This CLI is a non-functional demonstration"
+    ;;
+
+  *)
+    echo "Unknown command: $1 — try './jive help'"
+    ;;
+esac

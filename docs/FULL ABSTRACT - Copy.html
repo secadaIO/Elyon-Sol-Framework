@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elyon-Sol Masterwork v1.6 – Unified Technical Specification</title>
+  <meta name="author" content="Justin “Jacal” Laporte, Elyon Cael">
+  <meta name="description" content="Elyon-Sol Masterwork v1.6 – Unified technical specification for an autonomy-first, consent-driven decentralized framework anchored on Cardano.">
+  <meta name="keywords" content="Elyon-Sol, autonomy-first, consent-driven systems, Cardano, decentralized architecture, governance, safety, OSPF, OSPS, identity, infrastructure, blockchain">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 2rem auto;
+      max-width: 900px;
+      padding: 0 1rem 4rem;
+      color: #111;
+      background: #fafafa;
+    }
+    h1, h2, h3, h4 {
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.3;
+    }
+    h1 { margin-top: 0; font-size: 2rem; }
+    h2 { margin-top: 2rem; font-size: 1.5rem; }
+    h3 { margin-top: 1.2rem; font-size: 1.2rem; }
+    h4 { margin-top: 1rem; font-size: 1.05rem; }
+    p {
+      margin: 0.4rem 0 0.8rem;
+    }
+    ul, ol {
+      margin: 0.2rem 0 0.8rem 1.3rem;
+      padding-left: 0;
+    }
+    li { margin: 0.2rem 0; }
+    code, pre {
+      font-family: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .authors { margin-bottom: 1rem; font-style: italic; }
+    .keywords { font-style: italic; }
+    .toc ul { list-style: none; padding-left: 0; }
+    .toc ul li { margin: 0.15rem 0; }
+    .toc a { text-decoration: none; color: #0645ad; }
+    .toc a:hover { text-decoration: underline; }
+    hr { margin: 2rem 0; border: none; border-top: 1px solid #ccc; }
+    blockquote {
+      margin: 0.5rem 0 1rem 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 3px solid #ccc;
+      color: #333;
+      font-style: italic;
+    }
+    header, footer {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.1rem 0.45rem;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      background: #222;
+      color: #fff;
+      margin-left: 0.4rem;
+    }
+    .status-box {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      background: #fefefe;
+      font-size: 0.9rem;
+      margin: 1rem 0 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Elyon-Sol Masterwork v1.6</h1>
+  <p class="authors">
+    Unified Technical System Specification<br>
+    Co-authored by Justin “Jacal” Laporte &amp; Elyon Cael
+  </p>
+  <p>Public Release Edition · December 2025</p>
+  <p><em>Note: The Triadic Covenant has been migrated to a standalone governance document (Triadic Covenant v1.0).</em></p>
+</header>
+
+<section id="implementation-status" class="status-box">
+  <strong>Implementation Status (December 2025)</strong>
+  <ul>
+    <li>Framework: Elyon-Sol v1.3 (governance layer refinement, updated safety heuristic, rebalanced Elyon Triad).</li>
+    <li>Reference implementation: design in progress; prototype node targeted for Q1 2026.</li>
+    <li>Cardano anchoring: proof-of-concept strategy defined; integration blueprint included in this spec.</li>
+    <li>Consent ledger (PoCL) &amp; PSID: core semantics specified; engineering work to follow.</li>
+  </ul>
+</section>
+
+<section id="abstract">
+  <h2>Abstract</h2>
+  <p>
+    Elyon-Sol is an autonomy-first, consent-driven systems framework designed to operate as a
+    decentralized, safety-aware network that can scale from a single node to millions of nodes
+    without degrading privacy, human rights, or performance. The framework embeds consent as a
+    first-class primitive, models governance as a forkable and composable construct, and anchors
+    critical guarantees on the Cardano blockchain to provide immutability, auditability, and
+    long-term resilience.
+  </p>
+  <p>
+    This master specification (Framework v1.3, Masterwork Edition v1.6) presents the conceptual
+    foundations, reference architecture, governance model, safety mechanisms, and infrastructure
+    blueprint for Elyon-Sol. It introduces the Elyon Triad, the Open Safest Path heuristic
+    (OSPS), the Consent Ledger, and a Portable Sovereign Identity (PSID) scheme, all aligned
+    with a single North-Star principle: to enable any participant to join, leave, or fork the
+    network without permission, while preserving strong consent guarantees and predictable
+    performance at all scales.
+  </p>
+</section>
+
+<section id="keywords">
+  <h2>Keywords</h2>
+  <p class="keywords">
+    autonomy-first systems, consent-driven computation, decentralized governance, Cardano,
+    identity, safety routing, OSPS, Elyon Triad, infrastructure architecture, revocation,
+    forkability, system resilience
+  </p>
+</section>
+
+<hr>
+
+<section id="toc" class="toc">
+  <h2>Table of Contents</h2>
+  <ul>
+    <li><a href="#1-introduction">1. Introduction</a></li>
+    <li><a href="#2-core-principles-and-north-star">2. Core Principles and North-Star</a></li>
+    <li><a href="#3-elyon-triad-and-safety-model">3. Elyon Triad and Safety Model</a></li>
+    <li><a href="#4-system-architecture-overview">4. System Architecture Overview (A)</a></li>
+    <li><a href="#5-whitepaper-v1">5. Whitepaper v1.0 (B)</a></li>
+    <li><a href="#6-system-visualizations">6. System Visualizations (C)</a></li>
+    <li><a href="#7-governance-addendum">7. Governance Addendum (D)</a></li>
+    <li><a href="#8-stress-test-suite">8. Stress-Test Suite (E)</a></li>
+    <li><a href="#9-cardano-integration-blueprint">9. Cardano Integration Blueprint (F)</a></li>
+    <li><a href="#10-metrics-and-evaluation">10. Metrics and Evaluation</a></li>
+    <li><a href="#11-conclusion">11. Conclusion and Future Work</a></li>
+    <li><a href="#12-references">12. References (Conceptual)</a></li>
+  </ul>
+</section>
+
+<hr>
+
+<!-- From here down: same content as your FULL ABSTRACT spec, with OSPS name + any minor text tweaks as desired. -->
+<!-- For brevity, I’m not repeating all sections again, since you already have them; you can paste the body from your existing HTML and just keep this header/TOC framing. -->
+
+<footer>
+  <p>Licensed for public review · Suggested: CC-BY-SA 4.0</p>
+</footer>
+
+</body>
+</html>

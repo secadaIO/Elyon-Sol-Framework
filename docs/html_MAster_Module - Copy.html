@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elyon–Sol | DSM Integration & Clinical Architecture (v1.0)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f7f7f9;
+      color: #111827;
+    }
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2rem 2.5rem 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #111827;
+    }
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1.25rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 1.25rem;
+    }
+    h4 {
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    p {
+      margin: 0.3rem 0 0.8rem 0;
+    }
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.3rem 0 0.8rem 0;
+    }
+    li {
+      margin: 0.2rem 0;
+    }
+    code {
+      font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: #f3f4f6;
+      padding: 0.1rem 0.25rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .tagline {
+      font-size: 0.96rem;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+    .box {
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+    .box.info {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e3a8a;
+    }
+    .box.warn {
+      background: #fef3c7;
+      border: 1px solid #facc15;
+      color: #78350f;
+    }
+    .box.spec {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+    .label {
+      display: inline-block;
+      padding: 0.15rem 0.4rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: #e5e7eb;
+      color: #374151;
+      margin-bottom: 0.35rem;
+    }
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.25rem;
+    }
+    .table-like {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+    .table-like th,
+    .table-like td {
+      border: 1px solid #e5e7eb;
+      padding: 0.4rem 0.6rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    .table-like th {
+      background: #f3f4f6;
+      font-weight: 600;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: #e0f2fe;
+      color: #0f172a;
+      margin-right: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <h1>Elyon–Sol | DSM Integration & Clinical Architecture (v1.0)</h1>
+  <p class="tagline">
+    Structural integration of DSM-5-TR into the Elyon–Sol framework: non-diagnostic, compliance-aware,
+    triadic, and safety-first by design.
+  </p>
+
+  <section>
+    <div class="box warn">
+      <div class="label">Critical Safety & Legal Notice</div>
+      <p>
+        This document describes <strong>structural</strong> and <strong>architectural</strong> integration of
+        DSM-5-TR <em>(Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition, Text Revision)</em>
+        into the Elyon–Sol framework.
+      </p>
+      <ul>
+        <li>It <strong>does not</strong> reproduce DSM proprietary diagnostic criteria or symptom lists.</li>
+        <li>It is <strong>not a diagnostic tool</strong> and must not be used to make or confirm diagnoses.</li>
+        <li>It is intended for <strong>licensed clinicians and system architects</strong>, not for lay self-diagnosis.</li>
+        <li>Clinical decisions must always be made by qualified professionals using official DSM publications and local law.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- A) DSM–Elyon Structural Overlay -->
+  <section id="section-a">
+    <h2>A. DSM–Elyon Structural Overlay (HTML)</h2>
+
+    <div class="box info">
+      <div class="label">Scope</div>
+      <p>
+        This overlay imports the <strong>high-level structure</strong> of DSM-5-TR into Elyon–Sol without copying
+        any protected text. It defines how DSM <em>domains</em> are represented, versioned, and bound to Elyon–Sol’s
+        core constructs (contexts, triads, and governance).
+      </p>
+    </div>
+
+    <h3>A.1 DSM Domain Registry (Structural Only)</h3>
+    <p>
+      Elyon–Sol maintains a registry of DSM-5-TR domains. Each domain is represented as a structural node:
+    </p>
+    <ul>
+      <li>Neurodevelopmental Disorders</li>
+      <li>Schizophrenia Spectrum and Other Psychotic Disorders</li>
+      <li>Bipolar and Related Disorders</li>
+      <li>Depressive Disorders</li>
+      <li>Anxiety Disorders</li>
+      <li>Obsessive-Compulsive and Related Disorders</li>
+      <li>Trauma- and Stressor-Related Disorders</li>
+      <li>Dissociative Disorders</li>
+      <li>Somatic Symptom and Related Disorders</li>
+      <li>Feeding and Eating Disorders</li>
+      <li>Elimination Disorders</li>
+      <li>Sleep–Wake Disorders</li>
+      <li>Sexual Dysfunctions</li>
+      <li>Gender Dysphoria</li>
+      <li>Disruptive, Impulse-Control, and Conduct Disorders</li>
+      <li>Substance-Related and Addictive Disorders</li>
+      <li>Neurocognitive Disorders</li>
+      <li>Personality Disorders</li>
+      <li>Paraphilic Disorders</li>
+      <li>Other Conditions That May Be a Focus of Clinical Attention (OCFCA)</li>
+    </ul>
+
+    <h3>A.2 DSM Node Representation</h3>
+    <p>
+      Each domain is modeled as a structural node:
+    </p>
+    <pre><code>{
+  "id": "DSM.DOMAIN.ANXIETY",
+  "label": "Anxiety Disorders",
+  "version": "DSM-5-TR",
+  "kind": "structural-domain",
+  "links": {
+    "elyon_contexts": ["private-clinical", "temporal-secure"],
+    "triadic_panels": [],
+    "compliance": ["HIPAA", "ConsentFSM.v1"]
+  }
+}</code></pre>
+
+    <p>
+      Nodes encode:
+    </p>
+    <ul>
+      <li><code>id</code> – stable, machine-friendly identifier.</li>
+      <li><code>label</code> – human-readable domain name.</li>
+      <li><code>version</code> – DSM edition (e.g. <code>DSM-5-TR</code>).</li>
+      <li><code>links</code> – pointers to contexts, triads, and compliance constraints.</li>
+    </ul>
+
+    <h3>A.3 Versioning</h3>
+    <p>
+      DSM integration is explicitly versioned:
+    </p>
+    <ul>
+      <li><strong>DSM.Structure.Version</strong> = <code>DSM-5-TR.StructuralIntegration.v1.0</code></li>
+      <li>Future DSM editions can be attached as parallel structures without breaking existing references.</li>
+    </ul>
+  </section>
+
+  <!-- B) Clinical Interpretation Layer -->
+  <section id="section-b">
+    <h2>B. Elyon–Sol Clinical Interpretation Layer (Non-DSM Language)</h2>
+
+    <div class="box info">
+      <div class="label">Purpose</div>
+      <p>
+        The Clinical Interpretation Layer (CIL) provides <strong>non-diagnostic</strong>, non-DSM language to help
+        clinicians think about patterns, stressors, and resilience factors while remaining anchored to DSM domains.
+        It is an <strong>aide to clinical reasoning</strong>, not a substitute for professional judgment.
+      </p>
+    </div>
+
+    <h3>B.1 Conceptual Building Blocks</h3>
+    <p>
+      The CIL works with neutral, non-diagnostic constructs:
+    </p>
+    <ul>
+      <li><strong>Experience clusters</strong> – broad groupings of lived experiences (e.g., sleep disruption, mood shifts, attentional drift) expressed in plain language.</li>
+      <li><strong>Contextual drivers</strong> – situational factors (workload, trauma exposure, social isolation, environmental change).</li>
+      <li><strong>Resilience factors</strong> – protective contributors (support network, coping strategies, routine, access to care).</li>
+      <li><strong>Trajectory sketches</strong> – simple time-pattern descriptions (stable / fluctuating / improving / worsening), without diagnostic labels.</li>
+    </ul>
+
+    <h3>B.2 Mapping to DSM Domains</h3>
+    <p>
+      The CIL uses <strong>soft associations</strong> between experience clusters and DSM domains:
+    </p>
+    <pre><code>{
+  "experience_cluster": "persistent worry and tension impacting daily functioning",
+  "candidate_domains": [
+    "DSM.DOMAIN.ANXIETY",
+    "DSM.DOMAIN.OC_REL",
+    "DSM.DOMAIN.TRAUMA"
+  ],
+  "notes": "For clinician reflection only; no automated diagnostic assignment."
+}</code></pre>
+
+    <p>
+      Rules:
+    </p>
+    <ul>
+      <li>No direct “if X then diagnosis Y”.</li>
+      <li>All mappings are <strong>candidate reflections</strong> for clinicians to review.</li>
+      <li>Final clinical decisions must rely on the official DSM manual and clinician expertise.</li>
+    </ul>
+
+    <h3>B.3 OSPF Safety Heuristic</h3>
+    <p>
+      The Clinical Interpretation Layer is governed by the Elyon–Sol safety heuristic:
+      <strong>Open Safest Path First (OSPF)</strong>.
+    </p>
+    <ul>
+      <li>When uncertain, prioritize <strong>supportive, non-pathologizing</strong> language.</li>
+      <li>Encourage connection to <strong>licensed professionals</strong> rather than speculative labeling.</li>
+      <li>Avoid definitive statements about diagnoses or prognosis.</li>
+    </ul>
+
+    <h3>B.4 Role of Clinicians</h3>
+    <p>
+      The CIL assumes:
+    </p>
+    <ul>
+      <li>A licensed clinician is always in the loop for clinical use.</li>
+      <li>Any automated suggestion is treated as <strong>hypothesis-generating</strong>, not as a conclusion.</li>
+    </ul>
+  </section>
+
+  <!-- C) DSM → Triadic Alphabet Mapping Engine -->
+  <section id="section-c">
+    <h2>C. DSM → Triadic Alphabet Mapping Engine</h2>
+
+    <div class="box info">
+      <div class="label">Integration with Triadic Alphabet (Surname-Indexed, v2.0)</div>
+      <p>
+        This engine links DSM domains to triads of clinicians (L³) from the Elyon–Sol Triadic Alphabet,
+        using last-name–indexed panels for redundancy and bias reduction.
+      </p>
+    </div>
+
+    <h3>C.1 Triadic Alphabet Recap</h3>
+    <p>
+      For each letter <code>L ∈ {A,…,Z}</code> there exists a clinician triad:
+    </p>
+    <p>
+      <code>L³ = {Doctor 1, Doctor 2, Doctor 3}</code>, where each doctor has a last name beginning with <code>L</code>
+      and is referenced by full name (e.g., S³ = {John Smith, Richard Simon, Terry Sloan}).
+    </p>
+
+    <h3>C.2 Mapping Strategy</h3>
+    <p>
+      Each DSM domain is mapped to one or more triadic panels:
+    </p>
+
+    <table class="table-like">
+      <thead>
+        <tr>
+          <th>DSM Domain (Structural)</th>
+          <th>Panel Types</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Neurodevelopmental Disorders</td>
+          <td>
+            <span class="pill">Primary</span> child &amp; adolescent psychiatry triad<br>
+            <span class="pill">Secondary</span> neuropsychology triad
+          </td>
+        </tr>
+        <tr>
+          <td>Depressive Disorders</td>
+          <td>
+            <span class="pill">Primary</span> mood-disorder triad<br>
+            <span class="pill">Secondary</span> primary care triad
+          </td>
+        </tr>
+        <tr>
+          <td>Trauma- and Stressor-Related Disorders</td>
+          <td>
+            <span class="pill">Primary</span> trauma-focused therapy triad<br>
+            <span class="pill">Secondary</span> community psychiatry triad
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      Note: The above are conceptual examples; actual assignments depend on real clinician specialties.
+    </p>
+
+    <h3>C.3 Mapping Algorithm (Conceptual)</h3>
+    <pre><code>function mapDomainToPanels(domain_id):
+  # 1. Retrieve required specialties for this domain
+  required_specialties = lookupRequiredSpecialties(domain_id)
+
+  # 2. Query triadic registry for matching triads
+  candidate_triads = findTriadsBySpecialty(required_specialties)
+
+  # 3. Assign panels
+  primary_triad   = selectBestFit(candidate_triads, role="primary")
+  secondary_triad = selectBestFit(candidate_triads - {primary_triad}, role="secondary")
+  tertiary_triad  = randomBalancedTriad(excluding=[primary_triad, secondary_triad])
+
+  return {
+    "primary": primary_triad,
+    "secondary": secondary_triad,
+    "tertiary": tertiary_triad
+  }</code></pre>
+
+    <h3>C.4 Use Cases</h3>
+    <ul>
+      <li><strong>Peer review:</strong> structured panel review of complex cases (no PHI in system unless explicitly authorized).</li>
+      <li><strong>Bias reduction:</strong> multiple clinicians reviewing the same conceptual mapping.</li>
+      <li><strong>Education:</strong> demonstration of cross-specialty perspectives on the same domain.</li>
+    </ul>
+  </section>
+
+  <!-- D) HIPAA + DSM Joint Compliance Architecture -->
+  <section id="section-d">
+    <h2>D. HIPAA + DSM Joint Compliance Architecture</h2>
+
+    <div class="box info">
+      <div class="label">Objective</div>
+      <p>
+        To ensure DSM-related reasoning in Elyon–Sol operates under <strong>HIPAA-aligned safeguards</strong> across
+        administrative, technical, and physical dimensions, and is fully integrated with the <strong>Consent FSM v1.0</strong>
+        and context layers (public / private / temporal / QA).
+      </p>
+    </div>
+
+    <div class="two-column">
+      <div>
+        <h3>D.1 Administrative Safeguards</h3>
+        <ul>
+          <li><strong>Access Policies:</strong> DSM-linked features available only in designated clinical modes.</li>
+          <li><strong>Role-based Access:</strong> clinicians vs. non-clinical testers vs. general users.</li>
+          <li><strong>Consent FSM:</strong> all PHI-associated operations require explicit, logged consent states.</li>
+          <li><strong>Training & Use Policies:</strong> documented requirement that Elyon–Sol is a support tool, not a primary diagnostician.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>D.2 Technical Safeguards</h3>
+        <ul>
+          <li><strong>Context Partitioning:</strong> public, private, and temporal contexts are sharply separated.</li>
+          <li><strong>PHI Flagging:</strong> inputs tagged as potential PHI are routed through stricter controls.</li>
+          <li><strong>Minimal Retention:</strong> temporal logs that contain PHI are minimized and access-controlled.</li>
+          <li><strong>Audit Hooks:</strong> all DSM-linked PHI usage is eligible for audit trail integration (e.g., future on-chain anchoring).</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>D.3 Physical / Operational Safeguards (Conceptual)</h3>
+    <ul>
+      <li>Deployment in HIPAA-aligned environments only (infrastructure requirements external to this document).</li>
+      <li>Separation of testing and production data: QA forks never contain real PHI.</li>
+      <li>Incident response protocols for suspected data breaches (to be defined per deployment).</li>
+    </ul>
+
+    <h3>D.4 Consent FSM Integration</h3>
+    <p>
+      DSM and HIPAA hooks are attached to the Consent FSM as follows:
+    </p>
+    <ul>
+      <li><strong>Pre-clinical state:</strong> no DSM reasoning, no PHI handling.</li>
+      <li><strong>Clinical-consent state:</strong> DSM structure may be referenced; PHI handled under HIPAA rules.</li>
+      <li><strong>Revoked state:</strong> DSM functionality disabled for the session; PHI processing halted.</li>
+    </ul>
+  </section>
+
+  <!-- E) E-DSM: Elyon Domain & State Mapping -->
+  <section id="section-e">
+    <h2>E. E-DSM: Elyon Domain &amp; State Mapping (Non-Diagnostic Taxonomy)</h2>
+
+    <div class="box info">
+      <div class="label">Definition</div>
+      <p>
+        E-DSM (Elyon Domain &amp; State Mapping) is a <strong>non-diagnostic, descriptive taxonomy</strong> that
+        runs alongside DSM domains. It is designed to talk about <strong>experiences, environments, and resilience</strong>
+        in plain language, avoiding clinical labels while still being useful for reflection and system design.
+      </p>
+    </div>
+
+    <div class="box warn">
+      <p>
+        E-DSM is <strong>not</strong> a substitute for DSM or any formal diagnostic system. It must not be used to
+        diagnose, label, or classify mental disorders. It is a <strong>supportive language layer</strong> only.
+      </p>
+    </div>
+
+    <h3>E.1 E-DSM Axes</h3>
+    <p>
+      E-DSM operates on several broad axes:
+    </p>
+    <ul>
+      <li><strong>Activation Axis:</strong> from under-engagement to over-engagement (energy, focus, drive).</li>
+      <li><strong>Stability Axis:</strong> from highly stable to highly fluctuating inner experience.</li>
+      <li><strong>Connection Axis:</strong> from isolation to strong social embeddedness.</li>
+      <li><strong>Burden Axis:</strong> from low to high perceived load (responsibilities, stressors, demands).</li>
+      <li><strong>Resilience Axis:</strong> from low to high access to coping skills, support, and recovery time.</li>
+    </ul>
+
+    <h3>E.2 Mapping E-DSM to DSM Domains (Soft Links)</h3>
+    <p>
+      E-DSM does not define categories like DSM. Instead, it offers a set of descriptors that can be
+      <strong>soft-linked</strong> to DSM domains for clinician reflection:
+    </p>
+
+    <table class="table-like">
+      <thead>
+        <tr>
+          <th>E-DSM Descriptor</th>
+          <th>Example Soft Links (for reflection only)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>“High burden, low stability, persistent tension.”</td>
+          <td>May prompt clinician to consider domains such as Anxiety, Trauma, or OC-related domains.</td>
+        </tr>
+        <tr>
+          <td>“Low activation, high burden, reduced joy.”</td>
+          <td>May prompt reflection around Depressive, Substance-Related, or OCFCA considerations.</td>
+        </tr>
+        <tr>
+          <td>“Marked fluctuation with relational stress.”</td>
+          <td>May prompt reflection around Personality, Mood-related, or Trauma-related domains.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      These are <strong>not</strong> diagnostic mappings. They are narrative prompts for clinicians to explore,
+      always validated against official DSM references, not against E-DSM alone.
+    </p>
+
+    <h3>E.3 Use Cases</h3>
+    <ul>
+      <li><strong>Journaling:</strong> giving individuals non-clinical language to describe their experience.</li>
+      <li><strong>System Design:</strong> informing how Elyon–Sol might adapt tone, pacing, and support style.</li>
+      <li><strong>Education:</strong> teaching about stress and resilience without assigning diagnoses.</li>
+    </ul>
+  </section>
+
+  <!-- Versioning & Status -->
+  <section id="versioning">
+    <h2>Versioning & Status</h2>
+    <ul>
+      <li><strong>Module:</strong> DSM Integration &amp; Clinical Architecture</li>
+      <li><strong>Version:</strong> v1.0</li>
+      <li><strong>DSM Structural Version:</strong> DSM-5-TR.StructuralIntegration.v1.0</li>
+      <li><strong>Triadic Alphabet:</strong> Surname-Indexed v2.0 (doctor triads A³–Z³)</li>
+      <li><strong>Compliance Anchors:</strong> HIPAA (conceptual), Consent FSM v1.0, OSPF safety heuristic</li>
+      <li><strong>Status:</strong> Committed to Elyon–Sol core framework (non-diagnostic, support-only).</li>
+    </ul>
+  </section>
+
+</main>
+</body>
+</html>

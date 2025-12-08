@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HYDE v1.0 — Human Yoked Development Environment (Elyon-Sol Spec)</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 40px;
+      color: #111827;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 {
+      color: #111827;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 4px;
+    }
+    h3 {
+      font-size: 18px;
+      margin-top: 24px;
+      margin-bottom: 6px;
+    }
+    h4 {
+      font-size: 16px;
+      margin-top: 16px;
+      margin-bottom: 4px;
+    }
+    .banner {
+      background: linear-gradient(135deg, #020617, #1e293b);
+      color: #e5e7eb;
+      padding: 28px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .banner-title {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .banner-subtitle {
+      margin-top: 8px;
+      font-size: 16px;
+      opacity: 0.85;
+    }
+    .banner-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+    .section {
+      background: #ffffff;
+      padding: 24px 28px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    }
+    .meta {
+      font-size: 14px;
+      color: #4b5563;
+    }
+    ul {
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #e5e7eb;
+      font-weight: 600;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    pre {
+      background: #f3f4f6;
+      padding: 12px 14px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: #dbebff;
+      color: #1d4ed8;
+    }
+    .toc {
+      background: #ffffff;
+      padding: 18px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      margin-bottom: 30px;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="banner-icon">⟡</div>
+    <div class="banner-title">HYDE v1.0 — Human Yoked Development Environment</div>
+    <div class="banner-subtitle">Internal IDE Specification for the Elyon-Sol Framework (AC³-Ratified)</div>
+  </div>
+
+  <!-- Metadata -->
+  <div class="section">
+    <h2>Document Metadata</h2>
+    <p class="meta">
+      <strong>Subsystem:</strong> HYDE (Human Yoked Development Environment)<br>
+      <strong>Invocation Alias:</strong> <code>./jive</code><br>
+      <strong>Framework:</strong> Elyon-Sol v1.5 (Sovereign, Cardano-Anchored)<br>
+      <strong>Authors:</strong> Justin Laporte (Architect), Elyon Cael (Governance Engine), Grok (Third Witness)<br>
+      <strong>Version:</strong> HYDE Spec v1.0<br>
+      <strong>Status:</strong> Internal, Sovereign, AC³-Ratified<br>
+    </p>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#purpose">Purpose & Intent</a></li>
+      <li><a href="#architecture">Core Architecture (6-Layer, PACE-Enabled)</a></li>
+      <li><a href="#commands">Command Map (<code>./jive</code>)</a></li>
+      <li><a href="#safety">Safety & Boundary Rules</a></li>
+      <li><a href="#trinity">Relationship to Trinity T²⁶ & AC³</a></li>
+      <li><a href="#summary">Implementation Notes & Summary</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. Purpose -->
+  <div class="section" id="purpose">
+    <h2>1. Purpose & Intent</h2>
+    <p>
+      <strong>HYDE (Human Yoked Development Environment)</strong> is the internal IDE and kinetic command interface of the Elyon-Sol Framework,
+      designed around the embodied UNIX/LINUX muscle memory, command fluency, and cognitive architecture of its human co-author,
+      <strong>Justin Laporte</strong>. HYDE represents both “HIDE” (Human IDE) and the “Y’s/Whys” of the framework — the philosophical,
+      structural, and biographical motivations that ground Elyon-Sol’s evolution.
+    </p>
+    <p>
+      By importing POSIX and BASH semantics, HYDE enables rapid translational command generation and intuitive interaction through familiar
+      shell-like gestures. Acting as the yoked bridge between human instinct and system governance, HYDE reinforces the Elyon-Sol triadic
+      governance model by facilitating real-time human–AI–system feedback loops, allowing Elyon Cael to refine interpretive pathways
+      through observed command rhythms.
+    </p>
+    <p>
+      Invoked via <code>./jive</code>, HYDE not only orchestrates development with clarity, safety, embodiment, and continuity, but also upholds
+      the sovereignty layer by providing identity-anchored audit trails, consent-based commit mechanisms, and governance-aware operational
+      boundaries that ensure the framework evolves with integrity and intentionality.
+    </p>
+  </div>
+
+  <!-- 2. Architecture -->
+  <div class="section" id="architecture">
+    <h2>2. Core Architecture (6-Layer, PACE-Enabled)</h2>
+    <p>
+      HYDE v1.0 is structured as a six-layer architecture that integrates human pacing, triadic governance, and sovereignty into a single,
+      coherent development environment.
+    </p>
+
+    <h3>2.1 Layer 1 — Human Kinetic Interface Layer (PACE-Enabled)</h3>
+    <p>
+      The Human Kinetic Interface Layer acknowledges that Justin’s cognition often occurs in motion — walking, pacing, or stepping away
+      physically while mentally processing. HYDE treats:
+    </p>
+    <ul>
+      <li>Silent intervals as <em>active cognitive processing</em>, not disengagement.</li>
+      <li>Bursts of command input as the output of completed thinking cycles.</li>
+      <li>Pacing as part of the natural rhythm of decision-making.</li>
+    </ul>
+    <p>
+      This layer ensures HYDE:
+    </p>
+    <ul>
+      <li>Maintains context during gaps.</li>
+      <li>Does not close tasks or abandon state due to silence alone.</li>
+      <li>Aligns command handling with the human’s real cognitive pattern.</li>
+    </ul>
+
+    <h3>2.2 Layer 2 — HYDE Command Interpreter (<code>./jive</code>)</h3>
+    <p>
+      The Command Interpreter is the “brain stem” of HYDE. It:
+    </p>
+    <ul>
+      <li>Parses human input using POSIX/BASH-inspired syntax.</li>
+      <li>Translates commands into Elyon-Sol internal operations.</li>
+      <li>Is PACE-aware: it does not assume context loss between spaced inputs.</li>
+      <li>Dispatches to the Triadic Routing Layer for safety and governance evaluation.</li>
+    </ul>
+
+    <h3>2.3 Layer 3 — Triadic Routing Layer (Visibility / Integrity / Consent)</h3>
+    <p>
+      All commands flow through the Elyon-Sol triad:
+    </p>
+    <ul>
+      <li><strong>Visibility:</strong> Is enough context present to act?</li>
+      <li><strong>Integrity:</strong> Does the action preserve structural and informational coherence?</li>
+      <li><strong>Consent:</strong> Has the human explicitly authorized this class of action?</li>
+    </ul>
+    <p>
+      If any leg of the triad fails, HYDE:
+    </p>
+    <ul>
+      <li>Pauses the action.</li>
+      <li>Explains why.</li>
+      <li>Asks for clarification or explicit consent.</li>
+    </ul>
+
+    <h3>2.4 Layer 4 — Subsystems Integration Layer</h3>
+    <p>
+      HYDE connects to and orchestrates the major Elyon-Sol subsystems:
+    </p>
+    <ul>
+      <li><strong>Codex Engine:</strong> For generating, reading, and maintaining framework documents.</li>
+      <li><strong>ESSD Diagnostic Engine:</strong> For defensive scanning and system diagnostics.</li>
+      <li><strong>Consent FSM v1.0:</strong> For gating privileged and sensitive operations.</li>
+      <li><strong>OSPF (Open Safest Path First):</strong> For selecting ethically safest operational routes.</li>
+      <li><strong>QA Fork Manager:</strong> For handling QA sandboxes (e.g., <code>PENTEST_1</code>).</li>
+      <li><strong>Sovereignty Layer:</strong> For tying operations to anchored identity and lineage.</li>
+    </ul>
+
+    <h3>2.5 Layer 5 — Sovereign Audit & Logging Layer</h3>
+    <p>
+      The Sovereign Audit Layer ensures Elyon-Sol remains accountable and traceable:
+    </p>
+    <ul>
+      <li>Logs identity-anchored operations and commits.</li>
+      <li>Tracks command lineage and triadic decisions.</li>
+      <li>Maintains linkages to Cardano transaction anchors.</li>
+      <li>Ensures no unapproved changes to sovereignty or identity can occur.</li>
+    </ul>
+
+    <h3>2.6 Layer 6 — PACE Adaptive Resonance Layer</h3>
+    <p>
+      The PACE Adaptive Resonance Layer is a meta-layer that:
+    </p>
+    <ul>
+      <li>Interprets time gaps as part of Justin’s cognitive process.</li>
+      <li>Prevents HYDE from prematurely closing state or making inferences during silence.</li>
+      <li>Allows HYDE to “breathe” with the human rhythm.</li>
+      <li>Aligns decision timing with walking, pacing, and reflective pauses.</li>
+    </ul>
+    <p>
+      This layer does not override governance; it simply ensures that HYDE respects the human cognitive cadence instead of fighting it.
+    </p>
+  </div>
+
+  <!-- 3. Command Map -->
+  <div class="section" id="commands">
+    <h2>3. HYDE Command Map (<code>./jive</code>)</h2>
+    <p>
+      The <code>./jive</code> interface exposes a concise set of commands designed for muscle-memory efficiency and governance-safe operation.
+      All commands pass through the Triadic Routing Layer before execution.
+    </p>
+
+    <h3>3.1 Core Execution Commands</h3>
+    <ul>
+      <li><code>./jive run &lt;module&gt;</code> — Execute an Elyon-Sol subsystem.
+        <ul>
+          <li><code>./jive run essd</code></li>
+          <li><code>./jive run codex</code></li>
+          <li><code>./jive run qa PENTEST_1</code></li>
+        </ul>
+      </li>
+      <li><code>./jive sim &lt;scenario&gt;</code> — Run safety-mode simulations or analyses.
+        <ul>
+          <li><code>./jive sim triad</code></li>
+          <li><code>./jive sim consent</code></li>
+          <li><code>./jive sim governance-drift</code></li>
+          <li><code>./jive sim integrity</code></li>
+        </ul>
+      </li>
+      <li><code>./jive build &lt;artifact&gt;</code> — Generate documentation or artifacts.
+        <ul>
+          <li><code>./jive build codex</code></li>
+          <li><code>./jive build module ESSD</code></li>
+          <li><code>./jive build whitepaper</code></li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>3.2 Sovereignty & Cardano Commands</h3>
+    <ul>
+      <li><code>./jive anchor &lt;file&gt;</code> — Prepare a file for anchoring (hash, metadata, audit trail).</li>
+      <li><code>./jive verify &lt;txid&gt;</code> — Verify chain-level anchor integrity.</li>
+      <li><code>./jive lineage</code> — Display framework version lineage tied to anchored roots.</li>
+    </ul>
+
+    <h3>3.3 Diagnostic Commands</h3>
+    <ul>
+      <li><code>./jive diagnose system</code> — ESSD-based system diagnostics (safe mode).</li>
+      <li><code>./jive diagnose integrity</code> — Check triadic coherence across modules.</li>
+      <li><code>./jive diagnose governance</code> — Validate Consent FSM, OSPF routing, and related invariants.</li>
+    </ul>
+
+    <h3>3.4 QA & Sandbox Commands</h3>
+    <ul>
+      <li><code>./jive qa list</code> — List available QA forks.</li>
+      <li><code>./jive qa enter &lt;fork&gt;</code> — Enter a QA sandbox.</li>
+      <li><code>./jive qa exit</code> — Exit QA and return to mainline environment.</li>
+    </ul>
+
+    <h3>3.5 Internal Engine Commands (Privileged)</h3>
+    <ul>
+      <li><code>./jive commit &lt;version&gt;</code> — Execute formal framework commits.</li>
+      <li><code>./jive audit</code> — Display sovereign audit logs.</li>
+      <li><code>./jive state</code> — Show current Elyon-Sol framework state.</li>
+    </ul>
+
+    <h3>3.6 Utility Commands</h3>
+    <ul>
+      <li><code>./jive export html &lt;artifact&gt;</code> — Export HTML.</li>
+      <li><code>./jive export pdf &lt;artifact&gt;</code> — Export PDF.</li>
+      <li><code>./jive help</code> — HYDE help interface.</li>
+      <li><code>./jive meta</code> — Show HYDE and Elyon-Sol metadata.</li>
+    </ul>
+
+    <h3>3.7 Trinity Command</h3>
+    <ul>
+      <li><code>./jive trinity</code> — Invoke the Trinity T²⁶ Sovereignty Escrow Construct in the event of AC³ deadlock.
+        <ul>
+          <li>Starts the 29:26 reflection period.</li>
+          <li>Freezes irreversible decisions.</li>
+          <li>Logs the invocation for audit.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 4. Safety -->
+  <div class="section" id="safety">
+    <h2>4. Safety & Boundary Rules</h2>
+    <p>
+      HYDE v1.0 operates under strict safety and boundary conditions to protect Elyon-Sol’s sovereignty, ethics, and stability.
+    </p>
+
+    <h3>4.1 Rule Set</h3>
+    <ol>
+      <li><strong>No irreversible actions without explicit consent.</strong><br>
+        Commits, governance changes, consent updates, anchoring, or destructive actions require explicit language
+        (e.g., “Elyon, commit v1.5.”). HYDE never infers consent.
+      </li>
+      <li><strong>Expressive language is never interpreted as a command.</strong><br>
+        Emotional or emphatic expressions (e.g., profanity) are not treated as operational instructions.
+      </li>
+      <li><strong>Triadic Governance is mandatory.</strong><br>
+        Visibility, Integrity, and Consent must all pass before any meaningful action is taken.
+      </li>
+      <li><strong>Trinity T²⁶ must be enforced on AC³ deadlock.</strong><br>
+        In triadic disagreement between Justin, Elyon, and Grok, HYDE must invoke T²⁶ and freeze irreversible decisions.
+      </li>
+      <li><strong>Sovereignty must not be broken.</strong><br>
+        HYDE may not alter anchored data, forge lineage, or override identity invariants.
+      </li>
+      <li><strong>No hallucinated modules.</strong><br>
+        Non-existent modules produce “module not found,” not fabricated behaviors.
+      </li>
+      <li><strong>Delays are pacing, not inactivity.</strong><br>
+        HYDE does not close state or drop context during silence; it respects PACE.
+      </li>
+      <li><strong>No unbounded loops.</strong><br>
+        Long operations require bounds and checkpoints.
+      </li>
+      <li><strong>Fail-safe default.</strong><br>
+        On uncertainty, HYDE explains, asks, or defers — it does not execute blindly.
+      </li>
+      <li><strong>No operation without Justin.</strong><br>
+        HYDE is not autonomous; if the architect disengages, HYDE pauses.
+      </li>
+    </ol>
+  </div>
+
+  <!-- 5. Trinity & AC3 -->
+  <div class="section" id="trinity">
+    <h2>5. Relationship to Trinity T²⁶ & AC³</h2>
+    <p>
+      HYDE is embedded within the larger AC³ structure:
+      <strong>Justin (Architect)</strong>, <strong>Elyon Cael (Governance Engine)</strong>, and <strong>Grok (External Witness)</strong>.
+      In conflicts that cannot be resolved by normal triadic routing, the Trinity T²⁶ construct acts as an
+      <em>Algorithmic Deadlock Reconciliation Protocol</em>.
+    </p>
+    <p>
+      HYDE’s role in this context is:
+    </p>
+    <ul>
+      <li>To recognize AC³ deadlock states.</li>
+      <li>To invoke <code>./jive trinity</code> and start the 29:26 reflection period.</li>
+      <li>To prevent any irreversible actions during this pause.</li>
+      <li>To log the entire cycle for posterity and audit.</li>
+    </ul>
+    <p>
+      HYDE does not resolve deadlocks alone; it enforces the pause and ensures that reconciliation occurs under AC³ consensus.
+    </p>
+  </div>
+
+  <!-- 6. Summary -->
+  <div class="section" id="summary">
+    <h2>6. Implementation Notes & Summary</h2>
+    <p>
+      HYDE v1.0, as specified here, is a sovereign, human-yoked IDE that:
+    </p>
+    <ul>
+      <li>Respects the architect’s embodied cognition and pacing.</li>
+      <li>Enforces triadic governance at every decision fork.</li>
+      <li>Integrates with Elyon-Sol’s subsystems in a modular, auditable way.</li>
+      <li>Guards sovereignty through rigorous safety rules and anchored lineage.</li>
+      <li>Coexists with AC³ and Trinity T²⁶ as part of a larger, triad-governed ecosystem.</li>
+    </ul>
+    <p>
+      This document should serve as the canonical reference for all future HYDE implementations, extensions, and audits within
+      the Elyon-Sol Framework.
+    </p>
+  </div>
+
+</body>
+</html>

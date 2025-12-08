@@ -40,7 +40,16 @@ It is a **high-level design space** exploring how governance, ethics, and oversi
 
 All private architectural components, internal mechanisms, and identity-linked constructs remain **non-public**.
 
+## Structure
+- /docs: Conceptual abstracts (e.g., AC3 triad primitives)
+- /contracts: On-chain Sol teases (CIP-anchored)
+- /cli: Consent tooling stubs
+- /images: Visual resonance proofs
+
+- [![Cardano CIP Anchor](https://img.shields.io/badge/Cardano-CIP%20v5.1%20🕊️-blueviolet)](https://explorer.cardano.org/en/transaction?id=0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9)
+
 ---
+
 
 
 

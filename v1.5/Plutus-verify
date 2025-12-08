@@ -53,6 +53,8 @@ mkValidator rawDatum _rawRedeemer _rawCtx =
 --------------------------------------------------------------------------------
 -- 4. Compile to a Plutus Validator
 --------------------------------------------------------------------------------
+expectedGenesisHash :: BuiltinByteString
+expectedGenesisHash = "e4a92f0a8bb3acdb053ba09f734bb1e8c2b9c03d25436a1d7862ce9f68b1390f"
 
 validator :: Validator
 validator = PV2.mkValidatorScript

@@ -8,6 +8,8 @@
 
 <a href="https://cardanoscan.io/transaction/0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9">Anchor Link</a>
 
+[![Cardano Anchor](https://img.shields.io/badge/Cardano-Anchored%20🕊️-blueviolet)](https://explorer.cardano.org/en/transaction?id=0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9)
+
 <br/>
 
 </div>
@@ -42,6 +44,7 @@ It is a **high-level design space** exploring how governance, ethics, and oversi
 All private architectural components, internal mechanisms, and identity-linked constructs remain **non-public**.
 
 ---
+
 
 
 

@@ -1,5 +1,5 @@
 <div align="center">
-  
+  Anchor @ Cardano $hss TxID: 0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9
 # **Elyon-Sol Framework (Public Edition)**  
 ### *A Conceptual Exploration in AI Governance, Safety, and Human–AI Collaboration*
 
@@ -37,3 +37,4 @@ It is a **high-level design space** exploring how governance, ethics, and oversi
 All private architectural components, internal mechanisms, and identity-linked constructs remain **non-public**.
 
 ---
+

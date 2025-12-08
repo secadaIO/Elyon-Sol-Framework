@@ -3,6 +3,11 @@
 # **Elyon-Sol Framework (Public Edition)**  
 ### *A Conceptual Exploration in AI Governance, Safety, and Human–AI Collaboration*
 
+<h2>Cardano</h2>
+<p>Link to Genesis Anchor commit CIP v5.1:</p>
+
+<a href="https://cardanoscan.io/transaction/0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9">Anchor Link</a>
+
 <br/>
 
 </div>
@@ -37,4 +42,5 @@ It is a **high-level design space** exploring how governance, ethics, and oversi
 All private architectural components, internal mechanisms, and identity-linked constructs remain **non-public**.
 
 ---
+
 

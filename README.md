@@ -16,6 +16,8 @@ x.com/secadaIO
 
 [![Cardano Anchor](https://img.shields.io/badge/Cardano-Anchored%20🕊️-blueviolet)](https://explorer.cardano.org/en/transaction?id=0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9)
 
+Genesis hashing
+e4a92f0a8bb3acdb053ba09f734bb1e8c2b9c03d25436a1d7862ce9f68b1390f
 <br/>
 
 </div>
@@ -51,6 +53,7 @@ All private architectural components, internal mechanisms, and identity-linked c
 
 
 ---
+
 
 
 

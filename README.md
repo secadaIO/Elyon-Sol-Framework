@@ -9,8 +9,6 @@
 - /cli: Consent tooling stubs
 - /images: Visual resonance proofs
 
-- [![Cardano CIP Anchor](https://img.shields.io/badge/Cardano-CIP%20v5.1%20🕊️-blueviolet)](https://explorer.cardano.org/en/transaction?id=0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9)
-
 
 <p>Link to Genesis Anchor commit CIP v5.1:</p>
 
@@ -51,6 +49,7 @@ All private architectural components, internal mechanisms, and identity-linked c
 
 
 ---
+
 
 
 

@@ -1,1 +1,60 @@
+{-# LANGUAGE DataKinds          #-}
+{-# LANGUAGE NoImplicitPrelude  #-}
+{-# LANGUAGE TemplateHaskell    #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE TypeApplications   #-}
+
+module ElyonSol.HSSGenesis where
+
+import           PlutusTx
+import           PlutusTx.Prelude        hiding (Semigroup(..), unless)
+import           Plutus.V2.Ledger.Api    (BuiltinData, BuiltinByteString,
+                                          ScriptContext, Validator,
+                                          UnsafeFromData (unsafeFromBuiltinData))
+import qualified Plutus.V2.Ledger.Api    as PV2
+
+--------------------------------------------------------------------------------
+-- 1. Genesis datum type
+--------------------------------------------------------------------------------
+
+-- | Datum is just a raw bytestring: the hash of your genesis bundle
+type GenesisDatum = BuiltinByteString
+
+-- | Redeemer is unused for now (Unit)
+data GenesisRedeemer = GenesisRedeemer
+PlutusTx.unstableMakeIsData ''GenesisRedeemer
+
+--------------------------------------------------------------------------------
+-- 2. Hard-coded expected genesis hash
+--------------------------------------------------------------------------------
+
+-- TODO: replace this with the actual hash of your genesis commit artifact
+-- e.g. SHA256 of your v1.4 framework ZIP or manifest.
+expectedGenesisHash :: BuiltinByteString
+expectedGenesisHash =
+    "0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9"
+    -- ^ example: Cardano TX hash or SHA-256 of your canonical bundle
+
+--------------------------------------------------------------------------------
+-- 3. On-chain validation logic
+--------------------------------------------------------------------------------
+
+{-# INLINABLE mkValidator #-}
+mkValidator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
+mkValidator rawDatum _rawRedeemer _rawCtx =
+    let datum :: GenesisDatum
+        datum = unsafeFromBuiltinData rawDatum
+    in
+        if datum == expectedGenesisHash
+           then ()       -- validation success
+           else traceError "HSS: invalid genesis hash"
+
+--------------------------------------------------------------------------------
+-- 4. Compile to a Plutus Validator
+--------------------------------------------------------------------------------
+
+validator :: Validator
+validator = PV2.mkValidatorScript
+    $$(PlutusTx.compile [|| mkValidator ||])
 

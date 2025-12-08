@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elyon-Sol Healthcare Core Concept – HTI-26 & HIPAA Compliance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f7;
+      color: #111827;
+    }
+    header, footer {
+      background: #111827;
+      color: #f9fafb;
+      padding: 1.5rem 2rem;
+    }
+    header h1 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.6rem;
+    }
+    header p {
+      margin: 0;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      border-radius: 12px;
+    }
+    h2 {
+      margin-top: 2rem;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 0.4rem;
+      font-size: 1.35rem;
+    }
+    h3 {
+      margin-top: 1.25rem;
+      font-size: 1.1rem;
+    }
+    h4 {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+    p {
+      margin: 0.4rem 0;
+    }
+    ul {
+      margin: 0.4rem 0 0.8rem 1.4rem;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      background: #e5e7eb;
+      color: #374151;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      background: #f9fafb;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: #d1fae5;
+      color: #065f46;
+      margin-left: 0.4rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 0.5rem 0.6rem;
+      vertical-align: top;
+    }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #6b7280;
+      margin-bottom: 0.25rem;
+    }
+    footer {
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Elyon-Sol Healthcare Core Concept</h1>
+  <p>HTI-26 (Healthcare Triadic Index) · HIPAA-Safe Governance · Decision-Support Only</p>
+</header>
+
+<main>
+  <!-- Overview -->
+  <section id="overview">
+    <div class="section-label">Overview</div>
+    <h2>Core Concept Summary</h2>
+    <p>
+      This document captures the core healthcare integration concept for the Elyon-Sol framework:
+      a HIPAA-aligned, non-clinical decision-support and governance system that integrates
+      multi-disciplinary physician expertise via a triadic indexing model called <strong>HTI-26</strong>.
+    </p>
+    <div class="card">
+      <h3>System Identity</h3>
+      <p><span class="tag">Elyon-Sol</span><span class="tag">Decision-Support</span><span class="tag">Non-Clinical</span><span class="tag">HIPAA-Aligned</span></p>
+      <ul>
+        <li><strong>What Elyon-Sol Is:</strong> A structured, cognitive and governance framework that organizes expert input, supports protocol design, and improves workflows.</li>
+        <li><strong>What Elyon-Sol Is Not:</strong> A provider, diagnostic engine, medical device, or PHI-handling system.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HIPAA Charter -->
+  <section id="hipaa-charter">
+    <div class="section-label">Compliance</div>
+    <h2>HIPAA Compliance Charter v1.0 (Architectural)</h2>
+
+    <div class="card">
+      <h3>1. Covered Entity Status</h3>
+      <p>
+        Elyon-Sol is <strong>not</strong> a HIPAA covered entity and <strong>not</strong> a business associate, because it:
+      </p>
+      <ul>
+        <li>Does not store PHI</li>
+        <li>Does not transmit PHI</li>
+        <li>Does not process PHI</li>
+        <li>Does not retain patient identifiers</li>
+        <li>Does not diagnose, treat, or provide medical advice</li>
+      </ul>
+      <p>
+        Elyon-Sol operates strictly as a <strong>non-PHI advisory and governance support system</strong>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>2. PHI Handling Policy</h3>
+      <ul>
+        <li><strong>PHI is prohibited</strong> from being entered into, processed by, or stored in Elyon-Sol.</li>
+        <li>Permitted inputs: general medical knowledge, guidelines, workflows, and governance logic.</li>
+        <li>Prohibited inputs: any identifiable patient data (names, DOB, MRNs, case specifics, etc.).</li>
+      </ul>
+      <p><strong>Retention:</strong> no persistent storage of PHI; all sessions are conceptually PHI-free and non-persistent.</p>
+    </div>
+
+    <div class="card">
+      <h3>3. Clinical Role Boundary</h3>
+      <p>Elyon-Sol is a <strong>decision-support and governance system</strong>, not a clinical actor.</p>
+      <h4>Prohibited:</h4>
+      <ul>
+        <li>Making diagnoses</li>
+        <li>Prescribing medications</li>
+        <li>Interpreting patient-specific labs or imaging</li>
+        <li>Issuing clinical orders</li>
+      </ul>
+      <h4>Allowed:</h4>
+      <ul>
+        <li>Organizing physician knowledge and inputs</li>
+        <li>Structuring and documenting workflows</li>
+        <li>Assisting in drafting protocols and checklists</li>
+        <li>Clarifying reasoning chains for educational or governance use</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>4. Physician Interaction Rules</h3>
+      <p>Physicians interact with Elyon-Sol as external experts in a strictly advisory capacity.</p>
+      <ul>
+        <li>They may provide general, de-identified specialty knowledge.</li>
+        <li>They may review frameworks, logic flows, and policies.</li>
+        <li>They <strong>may not</strong> provide PHI or case-specific patient data.</li>
+        <li>They <strong>may not</strong> delegate clinical decisions to Elyon-Sol.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>5. Privacy & Security Principles</h3>
+      <ul>
+        <li>No PHI storage, indexing, or reconstruction.</li>
+        <li>Use of anonymized, generalized medical information only.</li>
+        <li>Strict role and scope boundaries for all users.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>6. Alignment with HIPAA</h3>
+      <p>This charter is designed to align with:</p>
+      <ul>
+        <li>HIPAA Privacy Rule</li>
+        <li>HIPAA Security Rule</li>
+        <li>Minimum Necessary Standard</li>
+        <li>Non-Covered Entity deployment patterns for advisory tools</li>
+      </ul>
+      <p><strong>Note:</strong> This is an architectural and governance alignment, not a legal certification.</p>
+    </div>
+  </section>
+
+  <!-- HTI-26 -->
+  <section id="hti-26">
+    <div class="section-label">Architecture</div>
+    <h2>HTI-26 :: Healthcare Triadic Index</h2>
+
+    <p>
+      HTI-26 is a physician-integration mechanism based on <strong>triads of clinicians</strong>, indexed A→Z, designed
+      to safely bring multiple types of medical proficiency into Elyon-Sol without handing clinical authority to AI.
+    </p>
+
+    <div class="card">
+      <h3>1. Structural Definition</h3>
+      <p>For each letter A–Z, a triad of physicians is defined:</p>
+      <pre><code>HTI-A = { Physician A1, Physician A2, Physician A3 }
+HTI-B = { Physician B1, Physician B2, Physician B3 }
+...
+HTI-Z = { Physician Z1, Physician Z2, Physician Z3 }</code></pre>
+      <p>
+        Each triad represents a <strong>cluster of expertise</strong>, not a fused entity: three peers sharing review and advisory responsibilities.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>2. Intended Use</h3>
+      <ul>
+        <li>Distribute clinical expertise across multiple disciplines.</li>
+        <li>Reduce bias by requiring triad review instead of single-expert dominance.</li>
+        <li>Mirror existing committee and board patterns in hospitals and clinics.</li>
+        <li>Create a scalable, explainable indexing system for up to 78 physicians.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>3. Physician Role (Advisory Only)</h3>
+      <p>Each triad functions as a <strong>non-clinical advisory unit</strong>. Typical responsibilities:</p>
+      <ul>
+        <li>Review conceptual care pathways and workflows.</li>
+        <li>Provide input on clinical safety considerations in protocols.</li>
+        <li>Help interpret general evidence and guidelines (in abstract form).</li>
+        <li>Assist in refining logic for alerts, checklists, and decision-support tools (non-patient-specific).</li>
+      </ul>
+      <p>They do <strong>not</strong> provide patient care via Elyon-Sol.</p>
+    </div>
+
+    <div class="card">
+      <h3>4. Safety & Governance Features</h3>
+      <ul>
+        <li>Triadic structure avoids over-reliance on single experts.</li>
+        <li>Advisory-only function keeps decisions in human clinical workflows.</li>
+        <li>Alphabetic indexing (A–Z) provides a simple, scalable namespace.</li>
+        <li>Physician recruitment, vetting, and approval are human-led, not automated.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Risk Matrix -->
+  <section id="risk-matrix">
+    <div class="section-label">Risk Management</div>
+    <h2>HIPAA Risk Assessment Matrix (Elyon-Sol)</h2>
+
+    <p>
+      The following matrix summarizes key HIPAA-related risks and mitigations for the Elyon-Sol framework when used in
+      healthcare environments.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Risk Category</th>
+          <th>Description</th>
+          <th>Likelihood</th>
+          <th>Impact</th>
+          <th>Mitigation</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PHI Exposure</td>
+          <td>Accidental entry of PHI by a user</td>
+          <td>Low</td>
+          <td>High</td>
+          <td>Strict policy &amp; prompts to avoid PHI; non-PHI usage guidelines</td>
+          <td>Controlled</td>
+        </tr>
+        <tr>
+          <td>PHI Retention</td>
+          <td>System storing PHI</td>
+          <td>Zero</td>
+          <td>High</td>
+          <td>No persistent storage; architectural design avoids PHI handling</td>
+          <td>Eliminated</td>
+        </tr>
+        <tr>
+          <td>AI Clinical Decision-Making</td>
+          <td>AI providing diagnoses or treatment plans</td>
+          <td>Medium</td>
+          <td>High</td>
+          <td>Hard boundary: decision-support only; explicit disclaimers</td>
+          <td>Controlled</td>
+        </tr>
+        <tr>
+          <td>Physician Input Drift</td>
+          <td>Physicians entering case-specific patient details</td>
+          <td>Medium</td>
+          <td>Medium</td>
+          <td>Onboarding education; safe-use reminders; governance review</td>
+          <td>Controlled</td>
+        </tr>
+        <tr>
+          <td>Cross-System Leakage</td>
+          <td>PHI transferred between Elyon-Sol layers</td>
+          <td>Zero</td>
+          <td>High</td>
+          <td>No PHI zones; conceptual partitioning of functions</td>
+          <td>Eliminated</td>
+        </tr>
+        <tr>
+          <td>Unauthorized Use</td>
+          <td>System used beyond intended scope</td>
+          <td>Low</td>
+          <td>Medium</td>
+          <td>Role definitions; governance oversight; contractual usage terms</td>
+          <td>Controlled</td>
+        </tr>
+        <tr>
+          <td>Regulatory Ambiguity</td>
+          <td>System perceived as a clinical tool</td>
+          <td>Medium</td>
+          <td>High</td>
+          <td>Clear branding as non-clinical; explicit disclaimers in all materials</td>
+          <td>Controlled</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Executive Overview -->
+  <section id="exec-overview">
+    <div class="section-label">Executive View</div>
+    <h2>Healthcare Executive Compliance Overview</h2>
+
+    <div class="card">
+      <h3>1. Positioning</h3>
+      <p>
+        Elyon-Sol is positioned as a <strong>non-clinical, HIPAA-aligned cognitive framework</strong> for organizing multi-disciplinary medical expertise and improving healthcare governance and workflows.
+      </p>
+      <ul>
+        <li>Supports physicians, administrators, and governance committees.</li>
+        <li>Does not handle PHI or make medical decisions.</li>
+        <li>Enhances clarity, documentation, and cross-team communication.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>2. HTI-26 Value Proposition</h3>
+      <p><strong>HTI-26 (Healthcare Triadic Index)</strong> offers:</p>
+      <ul>
+        <li>Up to 26 triads (A–Z) with 3 physicians each (78 total clinicians).</li>
+        <li>Distributed expertise and built-in bias reduction.</li>
+        <li>Patterns that resemble existing hospital boards and committees.</li>
+        <li>Flexible mapping to specialties (e.g., Acute Care, Cardiology, Diagnostics, etc.).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>3. Compliance & Safety Summary</h3>
+      <ul>
+        <li>No PHI is stored, processed, or transmitted.</li>
+        <li>Physicians function as external advisors, not as clinical users of an EMR system.</li>
+        <li>System is explicitly non-clinical and non-prescriptive.</li>
+        <li>All use is aligned to non-covered, non-PHI advisory purposes.</li>
+      </ul>
+      <p><span class="pill">Overall Risk Level: Green (for non-PHI advisory use)</span></p>
+    </div>
+
+    <div class="card">
+      <h3>4. Example Use Cases</h3>
+      <ul>
+        <li>Designing and reviewing clinical workflows and protocols (conceptual).</li>
+        <li>Supporting root-cause analysis and safety reviews (de-identified).</li>
+        <li>Creating educational materials and guideline summaries.</li>
+        <li>Assisting interdisciplinary committees with structured reasoning documents.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Elyon-Sol Healthcare Core Concept · HTI-26 &amp; HIPAA-Aligned Decision-Support · Generated for internal framework documentation and executive review.
+</footer>
+</body>
+</html>

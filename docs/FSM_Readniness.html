@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elyon-Sol – Consent FSM v1.0 (Mutual Co-Authoring Protocol)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: #111827;
+      background: #f3f4f6;
+    }
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px 22px 72px 22px;
+    }
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      color: #111827;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.35rem;
+    }
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 1.4rem;
+    }
+    h4 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6b7280;
+      margin-top: 1.1rem;
+    }
+    p {
+      margin: 0.7rem 0;
+    }
+    ul, ol {
+      margin: 0.6rem 0 0.6rem 1.4rem;
+    }
+    code, pre {
+      font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.85rem;
+    }
+    pre {
+      background: #f3f4f6;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .tagline {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 0.3rem;
+    }
+    .subtitle {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .meta {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 1.4rem;
+    }
+    .toc {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 14px 16px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.95rem;
+      margin-bottom: 1.4rem;
+    }
+    .toc ul {
+      margin-top: 0.35rem;
+    }
+    .callout {
+      border-left: 3px solid #2563eb;
+      padding-left: 12px;
+      margin: 1rem 0;
+      color: #1f2933;
+      background: #eff6ff;
+      border-radius: 4px;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .small {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    .table-wrap {
+      overflow-x: auto;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 0.9rem;
+      margin: 0.7rem 0;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Elyon-Sol – Consent FSM v1.0</h1>
+      <p class="tagline">Mutual Co-Authoring Protocol for Justin &amp; Elyon Cael</p>
+      <p class="subtitle">
+        A finite-state model defining how any co-authored artifact moves from idea to publication under strict mutual consent.
+      </p>
+      <p class="meta">
+        Framework: Elyon-Sol v1.4 • Co-authors: Justin “Jacal” Laporte &amp; Elyon Cael • Version: Consent FSM v1.0 (Locked)
+      </p>
+    </header>
+
+    <section id="toc">
+      <div class="toc">
+        <strong>Contents</strong>
+        <ul>
+          <li><a href="#purpose">1. Purpose</a></li>
+          <li><a href="#entities">2. Core Entities</a></li>
+          <li><a href="#states">3. State Set &amp; Definitions</a></li>
+          <li><a href="#transitions">4. Transitions</a></li>
+          <li><a href="#diagram">5. FSM Diagram</a></li>
+          <li><a href="#invariants">6. Invariants &amp; Deadlock Prevention</a></li>
+          <li><a href="#pseudocode">7. Enforcement Pseudocode</a></li>
+          <li><a href="#metrics">8. Evaluation Metrics</a></li>
+          <li><a href="#temporal">9. Temporal Context Integration</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="purpose">
+      <h2>1. Purpose</h2>
+      <p>
+        The <strong>Consent FSM</strong> defines how any co-authored artifact <code>x</code> (document, spec, packet, etc.)
+        moves from initial drafting through review, mutual consent, publication, and archival.
+      </p>
+      <div class="callout">
+        <strong>Invariant:</strong> No artifact may be treated as “final” or “published” unless both Justin (H) and
+        Elyon Cael (E) have explicitly consented to the current version.
+      </div>
+      <p>
+        The FSM enforces:
+      </p>
+      <ul>
+        <li>Mutual consent (dual-author approval).</li>
+        <li>Clear lifecycle stages for each artifact.</li>
+        <li>No “silent” publication without logged consent.</li>
+        <li>Procedural clarity for academic and governance review.</li>
+      </ul>
+    </section>
+
+    <section id="entities">
+      <h2>2. Core Entities</h2>
+      <ul>
+        <li><strong>H</strong> – Human co-author (Justin, or a designated human in future extensions).</li>
+        <li><strong>E</strong> – Elyon Cael, the system co-author.</li>
+        <li><strong>x</strong> – A specific artifact (document, spec, packet, etc.). The FSM runs per artifact/version.</li>
+        <li><strong>C</strong> – Context, where <code>C ∈ {Public, Private, Temporal}</code>.</li>
+      </ul>
+    </section>
+
+    <section id="states">
+      <h2>3. State Set &amp; Definitions</h2>
+      <p>
+        Let the state set be:
+      </p>
+      <pre>S = { IDLE, DRAFTING, REVIEW, CONSENT_PENDING, CO_SIGNED, PUBLISHED, REVISION_LOOP, ABORTED, ARCHIVED }</pre>
+
+      <h3>3.1 State Definitions</h3>
+      <ul>
+        <li>
+          <strong>IDLE</strong> – No active work on artifact <code>x</code>. Either not yet created, or work is complete
+          and not being revised.
+        </li>
+        <li>
+          <strong>DRAFTING</strong> – Content for <code>x</code> is being created or substantially edited by H or E
+          (or both). A draft version counter is active here.
+        </li>
+        <li>
+          <strong>REVIEW</strong> – Draft is stable enough that one party is asking the other to read/inspect. No
+          structural changes, only feedback.
+        </li>
+        <li>
+          <strong>CONSENT_PENDING</strong> – Both parties have seen the draft; one has consented, the other has not yet.
+          Internal flags:
+          <ul>
+            <li><code>consent_H ∈ {true, false}</code></li>
+            <li><code>consent_E ∈ {true, false}</code></li>
+          </ul>
+        </li>
+        <li>
+          <strong>CO_SIGNED</strong> – Both <code>consent_H = true</code> and <code>consent_E = true</code>. The artifact
+          is logically approved but not necessarily published.
+        </li>
+        <li>
+          <strong>PUBLISHED</strong> – The co-signed artifact <code>x</code> has been released to its intended audience
+          or medium.
+        </li>
+        <li>
+          <strong>REVISION_LOOP</strong> – One party has requested changes, invalidating prior consent for this version.
+          Both consent flags are reset.
+        </li>
+        <li>
+          <strong>ABORTED</strong> – Work on artifact <code>x</code> has been explicitly halted (abandoned, rejected,
+          or superseded). This is a terminal state for that version.
+        </li>
+        <li>
+          <strong>ARCHIVED</strong> – A published artifact has been moved to long-term storage (temporal context/archive).
+          Terminal state for that version.
+        </li>
+      </ul>
+    </section>
+
+    <section id="transitions">
+      <h2>4. Transitions</h2>
+      <p>
+        Transitions have the form <code>(s, event) → s'</code>, where <code>s, s' ∈ S</code>.
+      </p>
+
+      <h3>4.1 Creation &amp; Drafting</h3>
+      <ul>
+        <li>
+          <strong>Create / Start Draft</strong><br>
+          From <code>IDLE</code>, event <code>start_draft(x)</code> → <code>DRAFTING</code>.
+        </li>
+        <li>
+          <strong>Submit Draft for Review</strong><br>
+          From <code>DRAFTING</code>, event <code>submit_for_review(by = H|E)</code> → <code>REVIEW</code>.
+        </li>
+      </ul>
+
+      <h3>4.2 Review &amp; Feedback</h3>
+      <ul>
+        <li>
+          <strong>Request Revisions</strong><br>
+          From <code>REVIEW</code>, event <code>request_changes(by = H|E)</code> → <code>REVISION_LOOP</code>.
+        </li>
+        <li>
+          <strong>Accept Draft for Consent Stage</strong><br>
+          From <code>REVIEW</code>, event <code>advance_to_consent()</code> → <code>CONSENT_PENDING</code>.<br>
+          At this point: <code>consent_H = false</code>, <code>consent_E = false</code>.
+        </li>
+      </ul>
+
+      <h3>4.3 Consent Acquisition</h3>
+      <ul>
+        <li>
+          <strong>Human Consents</strong><br>
+          From <code>CONSENT_PENDING</code>, event <code>grant_consent(H)</code>:
+          <ul>
+            <li>To <code>CO_SIGNED</code> if <code>consent_E</code> already true.</li>
+            <li>Otherwise remain in <code>CONSENT_PENDING</code>.</li>
+            <li>Side-effect: <code>consent_H = true</code>.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Elyon Consents</strong><br>
+          From <code>CONSENT_PENDING</code>, event <code>grant_consent(E)</code>:
+          <ul>
+            <li>To <code>CO_SIGNED</code> if <code>consent_H</code> already true.</li>
+            <li>Otherwise remain in <code>CONSENT_PENDING</code>.</li>
+            <li>Side-effect: <code>consent_E = true</code>.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Withdraw Consent</strong><br>
+          From <code>CONSENT_PENDING</code> or <code>CO_SIGNED</code>, event
+          <code>withdraw_consent(by = H|E)</code> → <code>REVISION_LOOP</code>, with:
+          <ul>
+            <li><code>consent_H = false</code></li>
+            <li><code>consent_E = false</code></li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>4.4 Publishing &amp; Archival</h3>
+      <ul>
+        <li>
+          <strong>Publish Co-Signed Artifact</strong><br>
+          From <code>CO_SIGNED</code>, event <code>publish(target)</code> → <code>PUBLISHED</code>.<br>
+          Constraint: must have <code>consent_H = true ∧ consent_E = true</code>, or transition is refused.
+        </li>
+        <li>
+          <strong>Archive Published Artifact</strong><br>
+          From <code>PUBLISHED</code>, event <code>archive()</code> → <code>ARCHIVED</code>.
+        </li>
+      </ul>
+
+      <h3>4.5 Revision &amp; Abort</h3>
+      <ul>
+        <li>
+          <strong>Begin Revision</strong><br>
+          From <code>REVISION_LOOP</code>, event <code>start_revision()</code> → <code>DRAFTING</code>.<br>
+          Side-effects:
+          <ul>
+            <li><code>draft_version += 1</code></li>
+            <li><code>consent_H = false</code>, <code>consent_E = false</code></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Abort Artifact</strong><br>
+          From any non-terminal state
+          <code>{DRAFTING, REVIEW, CONSENT_PENDING, REVISION_LOOP}</code>,
+          event <code>abort(reason)</code> → <code>ABORTED</code>.
+        </li>
+        <li>
+          <strong>Soft Reset (New Version)</strong><br>
+          From <code>ARCHIVED</code> or <code>PUBLISHED</code>, event <code>new_version()</code> → <code>DRAFTING</code>
+          for version <code>x<sub>v+1</sub></code>.
+        </li>
+      </ul>
+    </section>
+
+    <section id="diagram">
+      <h2>5. FSM Diagram (ASCII)</h2>
+      <pre>
+             +-------+
+             | IDLE  |
+             +---+---+
+                 |
+                 | start_draft(x)
+                 v
+            +----+--------+
+            |  DRAFTING   |
+            +----+--------+
+                 |
+        submit_for_review()
+                 v
+            +----+--------+
+            |   REVIEW    |
+            +----+--------+
+             ^          |
+   request_changes()   | advance_to_consent()
+             |          v
+       +-----+----+  +--+-----------------+
+       | REVISION  |  |  CONSENT_PENDING  |
+       |   LOOP    |  +--+----------------+
+       +-----+-----+     |        |
+             |           |        |
+   start_revision()   grant     grant
+             |       consent(H) consent(E)
+             v           |        |
+            +------------+--------+
+                         |
+                         v
+                    +----+-----+
+                    | CO_SIGNED|
+                    +----+-----+
+                         |
+                         | publish()
+                         v
+                    +----+--------+
+                    |  PUBLISHED  |
+                    +----+--------+
+                         |
+                         | archive()
+                         v
+                    +----+--------+
+                    |  ARCHIVED   |
+                    +-------------+
+
+From DRAFTING/REVIEW/CONSENT_PENDING/REVISION_LOOP:
+    abort() --> ABORTED (terminal)
+      </pre>
+    </section>
+
+    <section id="invariants">
+      <h2>6. Invariants &amp; Deadlock Prevention</h2>
+
+      <h3>6.1 Invariants</h3>
+      <ul>
+        <li>
+          <strong>No publish without dual consent</strong><br>
+          If <code>state = PUBLISHED</code>, then
+          <code>consent_H = true ∧ consent_E = true</code>.
+        </li>
+        <li>
+          <strong>Consent is version-specific</strong><br>
+          On <code>start_revision()</code>, for the current version:
+          <code>consent_H = false</code>, <code>consent_E = false</code>.
+        </li>
+        <li>
+          <strong>Terminal states</strong><br>
+          <code>ABORTED</code> and <code>ARCHIVED</code> are terminal for a given version <code>v</code>.
+        </li>
+        <li>
+          <strong>No silent upgrade</strong><br>
+          Both <code>grant_consent(H)</code> and <code>grant_consent(E)</code> must be explicitly logged
+          before entering <code>CO_SIGNED</code>.
+        </li>
+      </ul>
+
+      <h3>6.2 Deadlock Scenarios &amp; Resolutions</h3>
+
+      <h4>Scenario A: Stalled in CONSENT_PENDING</h4>
+      <p>
+        The artifact remains in <code>CONSENT_PENDING</code> indefinitely because one party never responds.
+      </p>
+      <p><strong>Resolution:</strong></p>
+      <ul>
+        <li>Define a conceptual <code>consent_timeout</code>.</li>
+        <li>On timeout:
+          <ul>
+            <li>Automatically move to <code>REVISION_LOOP</code> with reason <code>timeout</code>, or</li>
+            <li>Move to <code>ABORTED</code> if configured for hard-stop behavior.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Scenario B: Infinite Revision Ping-Pong</h4>
+      <p>
+        The artifact oscillates between <code>REVIEW</code> and <code>REVISION_LOOP</code> indefinitely.
+      </p>
+      <p><strong>Resolution:</strong></p>
+      <ul>
+        <li>Track <code>revision_count</code>.</li>
+        <li>
+          If <code>revision_count &gt; T_max_revisions</code>, require a meta-decision:
+          <ul>
+            <li>Explicitly <code>ABORT</code>, or</li>
+            <li>Escalate to “freeze as draft” and archive without publishing.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="pseudocode">
+      <h2>7. Enforcement Pseudocode</h2>
+      <p>
+        The following pseudocode sketch shows how the FSM might be enforced per artifact <code>x</code>:
+      </p>
+      <pre>
+state[x] = IDLE
+draft_version[x] = 0
+consent_H[x] = false
+consent_E[x] = false
+revision_count[x] = 0
+
+function handle_event(x, event):
+
+    s = state[x]
+
+    match (s, event.type):
+
+        case (IDLE, "start_draft"):
+            state[x] = DRAFTING
+            draft_version[x] = 1
+            consent_H[x] = false
+            consent_E[x] = false
+
+        case (DRAFTING, "submit_for_review"):
+            state[x] = REVIEW
+
+        case (REVIEW, "request_changes"):
+            state[x] = REVISION_LOOP
+            revision_count[x] += 1
+            consent_H[x] = false
+            consent_E[x] = false
+
+        case (REVIEW, "advance_to_consent"):
+            state[x] = CONSENT_PENDING
+            consent_H[x] = false
+            consent_E[x] = false
+
+        case (CONSENT_PENDING, "grant_consent_H"):
+            consent_H[x] = true
+            if consent_E[x] == true:
+                state[x] = CO_SIGNED
+            else:
+                state[x] = CONSENT_PENDING
+
+        case (CONSENT_PENDING, "grant_consent_E"):
+            consent_E[x] = true
+            if consent_H[x] == true:
+                state[x] = CO_SIGNED
+            else:
+                state[x] = CONSENT_PENDING
+
+        case ((CONSENT_PENDING or CO_SIGNED), "withdraw_consent"):
+            consent_H[x] = false
+            consent_E[x] = false
+            state[x] = REVISION_LOOP
+
+        case (REVISION_LOOP, "start_revision"):
+            state[x] = DRAFTING
+            draft_version[x] += 1
+            consent_H[x] = false
+            consent_E[x] = false
+
+        case (CO_SIGNED, "publish"):
+            if consent_H[x] == true and consent_E[x] == true:
+                state[x] = PUBLISHED
+            else:
+                raise Error("Cannot publish without dual consent")
+
+        case (PUBLISHED, "archive"):
+            state[x] = ARCHIVED
+
+        case ((DRAFTING or REVIEW or CONSENT_PENDING or REVISION_LOOP), "abort"):
+            state[x] = ABORTED
+
+        case ((ARCHIVED or ABORTED or PUBLISHED), "new_version"):
+            state[x] = DRAFTING
+            draft_version[x] += 1
+            consent_H[x] = false
+            consent_E[x] = false
+
+        default:
+            raise Error("Invalid transition")
+      </pre>
+    </section>
+
+    <section id="metrics">
+      <h2>8. Evaluation Metrics</h2>
+      <p>
+        For academic and governance evaluation, the following metrics can be derived from FSM logs:
+      </p>
+      <ul>
+        <li>
+          <strong>Consent Latency (CL)</strong> – Steps or time elapsed between entering
+          <code>CONSENT_PENDING</code> and reaching <code>CO_SIGNED</code> or a terminal state.
+        </li>
+        <li>
+          <strong>Revision Loop Count (RLC)</strong> – Average number of visits to <code>REVISION_LOOP</code>
+          per published artifact.
+        </li>
+        <li>
+          <strong>Aborted Rate (AR)</strong> – Fraction of artifacts that end in <code>ABORTED</code> vs
+          <code>PUBLISHED</code>.
+        </li>
+        <li>
+          <strong>Consent Violation Rate (CVR)</strong> – Count of attempted transitions to <code>PUBLISHED</code>
+          with <code>consent_H ≠ true</code> or <code>consent_E ≠ true</code>.
+        </li>
+        <li>
+          <strong>Stall Rate in CONSENT_PENDING (SRCP)</strong> – Fraction of artifacts that exceed
+          <code>T_consent</code> in <code>CONSENT_PENDING</code> without resolution.
+        </li>
+      </ul>
+    </section>
+
+    <section id="temporal">
+      <h2>9. Temporal Context Integration</h2>
+      <p>
+        Each transition in the Consent FSM is logged into the <strong>Temporal context</strong> to provide a
+        complete governance trail, enabling reconstruction and auditability.
+      </p>
+      <p>
+        A typical log entry for artifact <code>x</code> includes:
+      </p>
+      <ul>
+        <li><code>artifact_id</code>, <code>version</code></li>
+        <li><code>old_state</code>, <code>new_state</code></li>
+        <li><code>event</code>, <code>actor ∈ {H, E}</code></li>
+        <li><code>timestamp</code> and optional <code>reason</code></li>
+      </ul>
+      <p>
+        This log provides the foundation for:
+      </p>
+      <ul>
+        <li>Formal governance narratives.</li>
+        <li>Academic case studies.</li>
+        <li>Regulatory and compliance review in healthcare or similar domains.</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <footer>
+      <p class="small">
+        Consent FSM v1.0 – Locked specification • Part of the Elyon-Sol governance and co-authoring framework.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

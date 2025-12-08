@@ -33,7 +33,7 @@ PlutusTx.unstableMakeIsData ''GenesisRedeemer
 -- e.g. SHA256 of your v1.4 framework ZIP or manifest.
 expectedGenesisHash :: BuiltinByteString
 expectedGenesisHash =
-    "0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9"
+    "e4a92f0a8bb3acdb053ba09f734bb1e8c2b9c03d25436a1d7862ce9f68b1390f"
     -- ^ example: Cardano TX hash or SHA-256 of your canonical bundle
 
 --------------------------------------------------------------------------------

@@ -51,8 +51,28 @@ It is a **high-level design space** exploring how governance, ethics, and oversi
 
 All private architectural components, internal mechanisms, and identity-linked constructs remain **non-public**.
 
+## 📦 Latest Release: v1.5.1
+
+The v1.5.1 release includes:
+
+- HSP v1.1 — Hallucination Safety Protocol
+- Full T²⁶ (T to the 26th Power) Verification Loop
+- Synthetic Consent Gate (pre-consent safety modeling)
+- Consent FSM updates
+- Master Codex Patch v1.5.1
+- GitHub repo structure alignment
+- Release notes + manifest
+
+📄 Release Notes:  
+releases/v1.5.1/release_notes_v1.5.1.md
+
+📄 Manifest:  
+releases/v1.5.1/elyon_sol_manifest_v1.5.1.json
+
+
 
 ---
+
 
 
 

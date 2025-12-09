@@ -1,0 +1,1 @@
+Public contributions allowed for conceptual ideas only.

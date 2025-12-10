@@ -1,2 +1,1 @@
-# Master Codex Patch v1.5.1
-(…content truncated…)
+Genesis Anchor #1 (Cardano): v1.5.1

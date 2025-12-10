@@ -69,9 +69,13 @@ releases/v1.5.1/release_notes_v1.5.1.md
 📄 Manifest:  
 releases/v1.5.1/elyon_sol_manifest_v1.5.1.json
 
+### 🔗 On-Chain Verification
+Elyon-Sol v1.5.1 is permanently anchored on Cardano:
+TxID: 77f7568abe08fb253aec0d188dc6e075a15abcb4a93d59c0ca51f9b9b58ae0ca
 
 
 ---
+
 
 
 

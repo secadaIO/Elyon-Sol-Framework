@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AC³ Doctor Triad Hierarchy – Overview</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+      background: #0b1120;
+      color: #e5e7eb;
+    }
+    h1, h2, h3, h4 {
+      color: #f9fafb;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid #38bdf8;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #38bdf8;
+    }
+    .card {
+      border-radius: 0.75rem;
+      border: 1px solid #1f2937;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: radial-gradient(circle at top left, #111827, #020617);
+    }
+    .triad-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .triad-letter {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .dr-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .dr-card {
+      border-radius: 0.75rem;
+      border: 1px solid #111827;
+      padding: 1rem;
+      background: #020617;
+    }
+    .dr-role {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .dr-name {
+      font-weight: 600;
+      margin: 0.25rem 0 0.5rem;
+    }
+    ol.subordinate-list {
+      margin: 0.25rem 0 0;
+      padding-left: 1.25rem;
+      font-size: 0.9rem;
+    }
+    .formula {
+      font-family: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+      background: #020617;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #111827;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="pill">AC³ – Healthcare Layer</span>
+    <h1>Doctor-Triad Hierarchy (A–Z) with Subordinates</h1>
+    <p>
+      This document defines the AC³ Doctor-Triad hierarchy: an A–Z index of physician triads,
+      each composed of three primary doctors and ten subordinate clinicians per doctor.
+      All triads are surname-indexed and designed for HIPAA-aware, context-routed use
+      inside the Elyon-Sol framework.
+    </p>
+  </header>
+
+  <section>
+    <h2>1. Conceptual Model</h2>
+    <p class="section-label">Structural Definition</p>
+    <div class="formula">
+      Alphabet = { A, B, C, …, Z }<br><br>
+
+      For each letter L ∈ Alphabet:<br>
+      &nbsp;&nbsp;L³ = { DR₁ᴸ, DR₂ᴸ, DR₃ᴸ }<br>
+      &nbsp;&nbsp;S(DRₓᴸ) = { s₁ … s₁₀ } (ten subordinates per doctor)<br><br>
+
+      Hierarchical triad for letter L:<br>
+      &nbsp;&nbsp;L³ᴴ = { (DR₁ᴸ, S(DR₁ᴸ)), (DR₂ᴸ, S(DR₂ᴸ)), (DR₃ᴸ, S(DR₃ᴸ)) }<br><br>
+
+      Full system:<br>
+      &nbsp;&nbsp;AC³-DR-Hierarchy = ⋃ L³ᴴ &nbsp;for all L ∈ Alphabet
+    </div>
+
+    <p class="section-label">Access & Safety (Sketch)</p>
+    <div class="formula">
+      Access(DRₓᴸ → Contextᵧ) = min(Clearance(DRₓᴸ), ModeGateᵧ)<br>
+      Access(sₖ → Contextᵧ) = min(Clearance(sₖ), ModeGateᵧ)
+    </div>
+
+    <p>
+      Each subordinate <strong>sₖ</strong> is a structured role object, typically including:
+    </p>
+    <div class="formula">
+      sₖ = (name, credential, specialty, clearance, mode-permissions)
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Triad Template (Per Letter)</h2>
+    <p>
+      The following is the reusable template for any letter L. Replace
+      <code>[L]</code> with A–Z and populate the doctors and their ten subordinates.
+    </p>
+
+    <div class="card">
+      <div class="triad-header">
+        <div class="triad-letter">[L]³ — Triad [L]</div>
+        <div class="pill">Template</div>
+      </div>
+      <p>
+        Surname-indexed triad: all primary doctors have last names beginning with [L].
+      </p>
+
+      <div class="dr-blocks">
+        <!-- DR1 -->
+        <div class="dr-card">
+          <div class="dr-role">Lead Physician — DR₁[L]</div>
+          <div class="dr-name">[LastName₁ᴸ], [FirstName₁] (e.g., Lawson, Avery)</div>
+          <p>Subordinate clinicians (10 slots):</p>
+          <ol class="subordinate-list">
+            <li>s₀₁ — ________________________________</li>
+            <li>s₀₂ — ________________________________</li>
+            <li>s₀₃ — ________________________________</li>
+            <li>s₀₄ — ________________________________</li>
+            <li>s₀₅ — ________________________________</li>
+            <li>s₀₆ — ________________________________</li>
+            <li>s₀₇ — ________________________________</li>
+            <li>s₀₈ — ________________________________</li>
+            <li>s₀₉ — ________________________________</li>
+            <li>s₁₀ — ________________________________</li>
+          </ol>
+        </div>
+
+        <!-- DR2 -->
+        <div class="dr-card">
+          <div class="dr-role">Counterbalance Physician — DR₂[L]</div>
+          <div class="dr-name">[LastName₂ᴸ], [FirstName₂]</div>
+          <p>Subordinate clinicians (10 slots):</p>
+          <ol class="subordinate-list">
+            <li>s₀₁ — ________________________________</li>
+            <li>s₀₂ — ________________________________</li>
+            <li>s₀₃ — ________________________________</li>
+            <li>s₀₄ — ________________________________</li>
+            <li>s₀₅ — ________________________________</li>
+            <li>s₀₆ — ________________________________</li>
+            <li>s₀₇ — ________________________________</li>
+            <li>s₀₈ — ________________________________</li>
+            <li>s₀₉ — ________________________________</li>
+            <li>s₁₀ — ________________________________</li>
+          </ol>
+        </div>
+
+        <!-- DR3 -->
+        <div class="dr-card">
+          <div class="dr-role">Contextual Physician — DR₃[L]</div>
+          <div class="dr-name">[LastName₃ᴸ], [FirstName₃]</div>
+          <p>Subordinate clinicians (10 slots):</p>
+          <ol class="subordinate-list">
+            <li>s₀₁ — ________________________________</li>
+            <li>s₀₂ — ________________________________</li>
+            <li>s₀₃ — ________________________________</li>
+            <li>s₀₄ — ________________________________</li>
+            <li>s₀₅ — ________________________________</li>
+            <li>s₀₆ — ________________________________</li>
+            <li>s₀₇ — ________________________________</li>
+            <li>s₀₈ — ________________________________</li>
+            <li>s₀₉ — ________________________________</li>
+            <li>s₁₀ — ________________________________</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      To instantiate the full A–Z system, duplicate the template block above for each letter
+      and replace <code>[L]</code> and the example names with real clinicians.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Example Instantiation (Optional)</h2>
+    <p>
+      Example for Triad A (for demonstration only — replace with real doctors and staff):
+    </p>
+
+    <div class="card">
+      <div class="triad-header">
+        <div class="triad-letter">A³ — Triad A</div>
+        <div class="pill">Example</div>
+      </div>
+      <p>Surname-indexed: all primary doctors' last names begin with “A”.</p>
+
+      <div class="dr-blocks">
+        <div class="dr-card">
+          <div class="dr-role">Lead Physician — DR₁ᴬ</div>
+          <div class="dr-name">Adams, Eleanor — MD, Psychiatry</div>
+          <p>Subordinate clinicians:</p>
+          <ol class="subordinate-list">
+            <li>s₀₁ — Alice Nguyen, RN</li>
+            <li>s₀₂ — Marco Diaz, LCSW</li>
+            <li>s₀₃ — Priya Patel, PA-C</li>
+            <li>s₀₄ — Jordan Lee, NP</li>
+            <li>s₀₅ — ______</li>
+            <li>s₀₆ — ______</li>
+            <li>s₀₇ — ______</li>
+            <li>s₀₈ — ______</li>
+            <li>s₀₉ — ______</li>
+            <li>s₁₀ — ______</li>
+          </ol>
+        </div>
+
+        <div class="dr-card">
+          <div class="dr-role">Counterbalance Physician — DR₂ᴬ</div>
+          <div class="dr-name">Alvarez, Miguel — MD, Internal Medicine</div>
+          <p>Subordinate clinicians:</p>
+          <ol class="subordinate-list">
+            <li>s₀₁ — ______</li>
+            <li>s₀₂ — ______</li>
+            <li>s₀₃ — ______</li>
+            <li>s₀₄ — ______</li>
+            <li>s₀₅ — ______</li>
+            <li>s₀₆ — ______</li>
+            <li>s₀₇ — ______</li>
+            <li>s₀₈ — ______</li>
+            <li>s₀₉ — ______</li>
+            <li>s₁₀ — ______</li>
+          </ol>
+        </div>
+
+        <div class="dr-card">
+          <div class="dr-role">Contextual Physician — DR₃ᴬ</div>
+          <div class="dr-name">Armitage, Sophia — MD, Neurology</div>
+          <p>Subordinate clinicians:</p>
+          <ol class="subordinate-list">
+            <li>s₀₁ — ______</li>
+            <li>s₀₂ — ______</li>
+            <li>s₀₃ — ______</li>
+            <li>s₀₄ — ______</li>
+            <li>s₀₅ — ______</li>
+            <li>s₀₆ — ______</li>
+            <li>s₀₇ — ______</li>
+            <li>s₀₈ — ______</li>
+            <li>s₀₉ — ______</li>
+            <li>s₁₀ — ______</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

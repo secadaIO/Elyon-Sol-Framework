@@ -1,0 +1,5 @@
+TVMQ v0.1
+Status: Triad-Approved, Sealed
+Category: Governance Layer Module
+Core Impact: None (non-core subsystem)
+Notes: Use for all deferred decisions and governance staging.

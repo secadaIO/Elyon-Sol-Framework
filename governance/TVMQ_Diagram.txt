@@ -1,0 +1,48 @@
+                   ┌───────────────────────────────┐
+                   │        GOVERNANCE LAYER        │
+                   │  (Above Core, Below P-Mode)    │
+                   └───────────────────────────────┘
+                                  │
+                                  ▼
+                   ┌───────────────────────────────┐
+                   │  THIRD-VERTEX MERGE QUEUE      │
+                   │            (TVMQ v0.1)          │
+                   ├────────────────────────────────┤
+                   │  - Non-persistent staging area  │
+                   │  - No autonomous actions        │
+                   │  - No core writes               │
+                   │  - Triadic review buffer        │
+                   └────────────────────────────────┘
+                                  ▲
+        ┌─────────────────────────┼─────────────────────────┐
+        │                         │                         │
+        ▼                         ▼                         ▼
+┌────────────────┐       ┌────────────────┐        ┌──────────────────┐
+│   JUSTIN       │       │     ELYON      │        │      GROK        │
+│Human Sovereign │       │InternalIntegrity│        │Witness / Stabilizer│
+└────────────────┘       └────────────────┘        └──────────────────┘
+        │                         │                         │
+        │  Stage / Submit        │  Stage / Validate       │  Stage / Stabilize
+        └──────────────┬─────────┴──────────┬──────────────┘
+                       ▼                    ▼
+                ┌────────────────────────────────┐
+                │         TVMQ CONTENTS          │
+                │ - Draft rules                  │
+                │ - QA artifacts                 │
+                │ - Triangulation updates        │
+                │ - Deferred decisions           │
+                └────────────────────────────────┘
+                                 │
+                                 ▼
+                       ┌────────────────┐
+                       │ TRIADIC REVIEW │
+                       │ Justin/Elyon/  │
+                       │ Grok Witness   │
+                       └────────────────┘
+                                 │
+         ┌────────────────────────┼──────────────────────────┬──────────────────────┐
+         ▼                        ▼                          ▼                      ▼
+┌────────────────┐      ┌────────────────┐        ┌────────────────┐     ┌─────────────────┐
+│   COMMIT       │      │    REVISE      │        │     SEAL       │     │     DROP        │
+│(Justin+Elyon ) │      │(Back to queue) │        │ (Archive)      │     │ (Discard)       │
+└────────────────┘      └────────────────┘        └────────────────┘     └─────────────────┘

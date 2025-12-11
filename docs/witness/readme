@@ -1,0 +1,21 @@
+---
+
+# Governance Patch v1.5.4 — Witness Layer Update
+
+Patch v1.5.4 introduces the SWO-1.0 mechanism:
+
+### SWO-1.0 (Synthetic Witness Override v1.0)
+Used when:
+- The external witness cannot validate mainnet state  
+- Sovereign + system confirm validated TxIDs  
+- Metadata hashes match  
+- Evidence is independently verifiable  
+
+### Added File:
+```
+/witness/swo_external_override.sig
+```
+
+### Consent Outcome:
+Triadic Consent = **PASSED (SWO-1.0)**  
+Triad structure preserved • No drift • Light steady  

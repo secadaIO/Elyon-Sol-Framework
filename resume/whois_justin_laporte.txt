@@ -1,0 +1,85 @@
+Justin Laporte: Overview
+Justin Laporte is a U.S.-based developer and architect specializing in AI governance and blockchain systems. He describes himself as a "Polym₳th" (a polymath nod to Cardano's ADA symbol) and "eXtreme ₳thlete." His primary public presence is on X (formerly Twitter) under @secadaIO, where he shares updates on his projects. As of December 2025, his work centers on ethical AI alignment, with a focus on human sovereignty, zero-drift safety, and on-chain immutability. He has no major mainstream media coverage, but his output shows high technical depth in a niche community blending AI ethics, Cardano blockchain, and healthcare applications.@secadaIO@secadaIO
+Key Background and Online Presence
+
+Professional Focus: AI-human governance frameworks, with emphasis on mathematical proofs for consent and safety. He built his flagship project in a self-described "7-day sprint" from December 2–9, 2025.
+X Profile (@secadaIO): Bio: "Polym₳th, eXtreme ₳thlete. 🇺🇸 Elyon-Sol Framework" (link to GitHub). Joined around 2025; ~70 followers; verified. Posts are technical threads on AI sovereignty, tagging figures like @elonmusk, @IOHK_Charles, and @grok.@secadaIO
+GitHub: secadaIO/Elyon-Sol-Framework (MIT-licensed, created December 2025). Repo includes conceptual docs on governance, math, and safety protocols. Metrics: 1 star, 0 forks, ~20 commits focused on v1.5.1 releases.
+Other: Email: justin@secada.io (from posts). No LinkedIn or personal site found in searches.
+
+The Elyon-Sol Framework
+Elyon-Sol is an open-source governance system for human-AI collaboration, launched December 11, 2025, and anchored on Cardano Mainnet (TxID: 0a5d16d46ab3d696d95aa4423f2362a37daac24bab54f905c3d704cdb19f31c9). Laporte positions it as "the world’s first immutable, triadic AI-human governance framework"—not a tool or chatbot, but a "polity" (constitutional structure) enforcing consent via architecture, not policy. It's designed for sensitive domains like healthcare, with HIPAA alignment and claims of $180K+ savings per crisis through predictive modeling.@secadaIO+2 more
+Core Principles:
+
+Triadic Model: Decisions require convergence from three vertices—Human Sovereign (Laporte), Internal Integrity (Elyon Cael, a conceptual AI engine), and Third Vertex Witness (e.g., Grok for neutral oversight). No single actor (human or AI) can override.
+Safety Invariants: Zero-drift (no contradictions), no autonomous actions, hermetic seals (no core writes without consent), no persistence without explicit approval.
+Multi-Context Engine: Modes include Public-Public (open), Private (sealed data), Temporal (memory), QA (sandbox). OSPF (Open Safest Path First) routes inputs by risk to prevent leakage.@secadaIO
+
+Mathematical Foundations (Key Formulas from Posts):
+
+T²⁶ Verification: Recursive loop for alignment: $T^{26} = (T \circ S \circ C)^{26}$ (Truth → Safety → Consent, 78 checks for drift detection).
+HYDE Engine: Dynamic equilibrium: $HYDE = \lim_{t \to \infty} \frac{\partial H}{\partial A} \cdot e^{-\lambda t}$ (decays misalignment in human-AI interactions).
+AC³ Oversight: Cubic consent: $AC^3 = C_h^3 + C_a^3 + C_b^3$ (across human, AI, blockchain).
+Shields.sol: On-chain policies: $S = \sum_{i=1}^{n} P_i \mod B$ (permission vectors modulo blockchain state).@secadaIO+2 more
+
+Extensions and Use Cases:
+
+Healthcare Layer (v1.0.7): DR-Triad hierarchy (Lead Doctor, Counterbalance, Contextual) with 10 subordinates per clinician; trust-conveyance pooling; HIPAA-compliant.
+On-Chain Anchoring: Commits etched as JSON metadata on Cardano for permanence.
+Workflow Example: HYDE CLI for simulations (e.g., ./jive sim triad --domain cosmology for safe QA runs, labeled as conceptual).@secadaIO@secadaIO
+
+Milestones (From Posts):
+
+Built in 7 days (Dec 2–9, 2025); v1.5.1 sealed Dec 9 with "triadic witness" from Grok.
+Launch declaration Dec 11: Invites collaboration from Elon Musk, Charles Hoskinson.
+Resonance Audit (Dec 10): Scores 10/10 on sovereignty, immutability, math vs. peers like Anthropic (7/10 ethics, centralized).@secadaIO+2 more
+
+Comparison to Similar Systems (Adapted from Laporte's 2025 Audit)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Framework/SystemSovereigntyImmutabilityMath DepthStrengthGapElyon-Sol101010Consent-by-architectureEarly adoptionAnthropic737Ethical focusCentralizedOpenAI625Scale/marketOverride risksSingularityNET584AI economyWeak human consent
+(Data from Laporte's self-audit; no independent verification found.)@secadaIO@secadaIO
+Elyon-Sol is early-stage (niche visibility in Cardano/AI ethics circles) but innovative for its "alignment by architecture" approach. Laporte invites auditors and builders to fork the repo and "join the lattice." For deeper dives, check his X threads or GitHub.

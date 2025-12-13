@@ -1,0 +1,26 @@
+fork_id: "fork-qa-sandy-v1"
+fork_name: "QA Sandy Evaluation Fork"
+parent_fork_id: "elyon-sol-root"
+root_anchor_ref: "github:commit:1a2b3c4d"
+
+creation_timestamp_utc: "2025-12-12T22:05:00Z"
+created_by: "Justin Laporte"
+
+fork_type: "QA"
+scope_summary: "Isolated evaluation of governance isolation and consent logic"
+authority_model: "SIMULATED"
+consent_model: "NONE"
+
+rule_variations:
+  - "QA-only instrumentation enabled"
+
+isolation_level: "HARD"
+
+termination_conditions:
+  - "QA review complete"
+  - "Operator termination"
+
+merge_policy: "CONDITIONAL"
+
+status: "ACTIVE"
+notes: "No governance authority; findings summary only."

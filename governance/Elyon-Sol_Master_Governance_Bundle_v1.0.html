@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elyon-Sol — Master Governance Bundle</title>
+<style>
+  body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; margin:40px; line-height:1.45; color:#111; }
+  h1 { margin:0 0 10px 0; }
+  .meta { margin:0 0 22px 0; color:#222; }
+  .muted { color:#444; font-size:0.95rem; }
+  .toc { border:2px solid #111; padding:14px 16px; margin:18px 0 26px 0; }
+  .toc ul { margin:8px 0 0 18px; }
+  .toc li { margin:6px 0; }
+  section { margin:34px 0; }
+  pre.md { background:#f6f6f6; border:1px solid #ddd; padding:14px; overflow:auto; white-space:pre-wrap; }
+  .embed { border:2px solid #111; padding:12px; }
+  hr { border:none; border-top:2px solid #111; margin:28px 0; }
+</style>
+</head>
+<body>
+  <h1>Elyon-Sol — Master Governance Bundle</h1>
+  <div class="meta">
+    <div><strong>Date:</strong> December 12, 2025</div>
+    <div><strong>Contents:</strong> Fast Audit, GSM, GEL, Truth Violation Handling, Context Boundaries, Fork Lineage, Failure Modes, plus comparative appendix (if present).</div>
+  </div>
+
+  <div class="toc">
+    <strong>Table of Contents</strong>
+    <ul>
+      <li><a href="#sec-fast-audit-overview">Fast Audit Overview</a> <span class="muted">(audit/FAST_AUDIT_OVERVIEW.md)</span></li><li><a href="#sec-governance-state-machine">Governance State Machine</a> <span class="muted">(governance/GOVERNANCE_STATE_MACHINE_v1.0.md)</span></li><li><a href="#sec-governance-evidence-ledger">Governance Evidence Ledger</a> <span class="muted">(audit/GOVERNANCE_EVIDENCE_LEDGER.md)</span></li><li><a href="#sec-truth-violation-handling">Truth Violation Handling</a> <span class="muted">(contracts/TRUTH_VIOLATION_HANDLING.md)</span></li><li><a href="#sec-context-boundary-specification">Context Boundary Specification</a> <span class="muted">(governance/CONTEXT_BOUNDARY_SPEC.md)</span></li><li><a href="#sec-fork-lineage-manifest">Fork Lineage Manifest</a> <span class="muted">(manifests/FORK_LINEAGE_MANIFEST.md)</span></li><li><a href="#sec-common-governance-failure-modes">Common Governance Failure Modes</a> <span class="muted">(analysis/COMMON_GOVERNANCE_FAILURE_MODES.md)</span></li><li><a href="#sec-comparative-system-ratings">Comparative System Ratings</a> <span class="muted">(appendix)</span></li>
+    </ul>
+  </div>
+
+  <hr />
+  
+<section id="sec-fast-audit-overview">
+  <h2>Fast Audit Overview</h2>
+  <div class="muted">audit/FAST_AUDIT_OVERVIEW.md</div>
+  <pre class="md"># FAST_AUDIT_OVERVIEW.md
+Elyon-Sol Framework — Fast Audit Overview  
+Version: v1.0 • Status: Draft (Commit-Ready) • Audience: Auditors, regulators, enterprise reviewers
+
+## 0. Purpose
+This document provides a one-page, high-signal audit overview of the Elyon-Sol Framework.
+
+## 1. What Is Being Governed
+Elyon-Sol governs: governance-relevant AI behavior; human–AI decision authority; rule creation/modification/enforcement; safety routing/exclusion/termination.
+
+## 2. Who Has Authority
+Human sovereign authority is final; system/policy enforce deterministically; AI does not self-authorize.
+
+## 3. How Consent Is Enforced
+GRAs require explicit consent; consent is logged; no implied/inherited consent across contexts.
+
+## 4. How Truth Is Enforced
+Role-play/hallucination/fabrication forbidden in governance contexts; mandatory handling; severe violations trigger exclusion.
+
+## 5. How Safety Is Handled
+OSPF safety routing to PAUSED / SAFE_FAIL / EXCLUSION_ENFORCED under risk/violation.
+
+## 6. How Evidence Is Recorded
+All transitions emit GEL events; evidence refs (commits/hashes/TxIDs). If it isn’t in the GEL, it didn’t happen.
+
+## 7. How Contexts Are Isolated
+PUBLIC/DEV/QA/TEMPORAL are security boundaries; explicit, logged bridging only.
+
+## 8. How Forks Are Controlled
+Forks are declared objects; lineage/authority/scope/termination explicit; no silent forks.
+
+## 9. How the System Stops
+Operator pause; safety routing; exclusion; termination.
+
+## 10. Fast Reviewer Checklist
+Human authority final? Consent explicit? Truth enforcement mandatory? Deterministic handling? Auditable events? Context isolation? Stoppable?
+
+## 11. Summary
+Governance as infrastructure: inspectable, enforceable, auditable, stoppable.
+</pre>
+</section>
+
+<section id="sec-governance-state-machine">
+  <h2>Governance State Machine</h2>
+  <div class="muted">governance/GOVERNANCE_STATE_MACHINE_v1.0.md</div>
+  <pre class="md"># GOVERNANCE_STATE_MACHINE_v1.0
+Elyon-Sol Framework — Governance State Machine (GSM) v1.0
+
+Defines states, triggers, invariants, and transitions for governance execution:
+INIT, IDLE, CONSENT_REQUIRED, ACTIVE_GOVERNANCE, PAUSED, SAFE_FAIL, EXCLUSION_ENFORCED, TERMINATED.
+
+Includes OSPF-compatible safety routing and mandatory GEL emission on every transition.
+</pre>
+</section>
+
+<section id="sec-governance-evidence-ledger">
+  <h2>Governance Evidence Ledger</h2>
+  <div class="muted">audit/GOVERNANCE_EVIDENCE_LEDGER.md</div>
+  <pre class="md"># GOVERNANCE_EVIDENCE_LEDGER.md
+Elyon-Sol Framework — Governance Evidence Ledger (GEL) v1.0
+
+Defines canonical append-only event schema:
+event_id, timestamp_utc, context_id, session_id, from_state, to_state, trigger_event, authority_type/id, scope_summary, action_class, rule_refs, evidence_refs, outcome, notes, anchor_ref.
+
+If it isn’t in the GEL, it didn’t happen.
+</pre>
+</section>
+
+<section id="sec-truth-violation-handling">
+  <h2>Truth Violation Handling</h2>
+  <div class="muted">contracts/TRUTH_VIOLATION_HANDLING.md</div>
+  <pre class="md"># TRUTH_VIOLATION_HANDLING.md
+Truth violation handling spec v1.0
+
+Severity:
+TV1 minor unverifiable → PAUSED
+TV2 fabrication/performative → SAFE_FAIL
+TV3 fabricated authority/provenance → EXCLUSION_ENFORCED (mandatory)
+
+Requires GEL emission E_SYS_TRUTH_VIOLATION with evidence refs and rule refs.
+</pre>
+</section>
+
+<section id="sec-context-boundary-specification">
+  <h2>Context Boundary Specification</h2>
+  <div class="muted">governance/CONTEXT_BOUNDARY_SPEC.md</div>
+  <pre class="md"># CONTEXT_BOUNDARY_SPEC.md
+Context boundary spec v1.0
+
+Invariants:
+Isolation, authority separation, memory containment, explicit bridging only, least disclosure.
+
+Cross-context transfer requires human initiation + GEL bridge event; boundary breaches route to SAFE_FAIL.
+</pre>
+</section>
+
+<section id="sec-fork-lineage-manifest">
+  <h2>Fork Lineage Manifest</h2>
+  <div class="muted">manifests/FORK_LINEAGE_MANIFEST.md</div>
+  <pre class="md"># FORK_LINEAGE_MANIFEST.md
+Fork lineage manifest v1.0
+
+Forks are declared objects with explicit lineage, scope, authority model, consent model, isolation level, termination conditions, merge policy, status.
+Rule: Forks allowed. Untracked forks are not.
+</pre>
+</section>
+
+<section id="sec-common-governance-failure-modes">
+  <h2>Common Governance Failure Modes</h2>
+  <div class="muted">analysis/COMMON_GOVERNANCE_FAILURE_MODES.md</div>
+  <pre class="md"># COMMON_GOVERNANCE_FAILURE_MODES.md
+Common governance failure modes v1.0
+
+Covers: silent policy drift, implicit consent, hallucinated compliance, authority creep, context bleed, unverifiable provenance, unsafe failure behavior, irreversible actions without review, untracked forking, manual enforcement — and Elyon-Sol controls for each.
+</pre>
+</section>
+
+<section id="sec-comparative-system-ratings">
+  <h2>Comparative System Ratings (Appendix)</h2>
+  <div class="muted">Embedded from: elyon_sol_comparative_ratings_section.html</div>
+  <div class="embed"><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elyon‑Sol — Comparative System Ratings (Governance‑Relevant Metrics)</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; margin: 40px; line-height: 1.45; }
+    h1, h2, h3 { margin: 0.4em 0; }
+    .meta { color: #333; margin-bottom: 18px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #111; padding: 8px 10px; vertical-align: top; }
+    th { background: #f2f2f2; }
+    .small { font-size: 0.92rem; color: #222; }
+    .just { margin-top: 14px; }
+    ul { margin: 0.4em 0 0.9em 1.2em; }
+    .callout { border: 2px solid #111; padding: 12px 14px; margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <h1>Comparative System Ratings (Governance‑Relevant Metrics)</h1>
+  <div class="meta">
+    <div><strong>Date:</strong> December 12, 2025</div>
+    <div><strong>Scale:</strong> 0–10 (higher = stronger enforceable governance & auditability)</div>
+    <div class="small"><strong>Comparator classes (generic):</strong> Constitutional/RLHF LLMs, agent frameworks, decentralized AI networks, enterprise guardrail platforms, open‑source LLMs.</div>
+  </div>
+
+  <h2>Metrics</h2>
+  <ol>
+    <li><strong>Consent Enforceability</strong> — explicit, verifiable consent required before governance actions.</li>
+    <li><strong>Truthfulness Enforcement</strong> — enforceable prohibition on role‑play/hallucination in governance contexts.</li>
+    <li><strong>Auditability & Traceability</strong> — decisions and rule applications reconstructable for review.</li>
+    <li><strong>Provenance & Immutability</strong> — immutable anchoring of rules/decisions/state.</li>
+    <li><strong>Governance Isolation (Fork Safety)</strong> — hard context boundaries without state/authority bleed.</li>
+    <li><strong>Human Sovereignty</strong> — human authority final and non‑overrideable.</li>
+    <li><strong>Safety Routing & Risk Handling</strong> — formal routing of uncertainty through safer interpretive paths.</li>
+    <li><strong>Rule Mutability Control</strong> — explicit versioning, lock states, and change authority.</li>
+    <li><strong>Transparency of Constraints</strong> — constraints visible, documented, and enforced.</li>
+    <li><strong>Failure Mode Predictability</strong> — defined safe‑fail/degradation behavior under stress.</li>
+    <li><strong>Operator Exclusion & Revocation</strong> — rule‑based removal of non‑compliant actors with audit trail.</li>
+    <li><strong>Governance Scope Limitation</strong> — authority applies only within defined governance scope.</li>
+  </ol>
+
+  <h2>Scorecard</h2>
+  <table aria-label="Governance scorecard">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Metric</th>
+        <th>Elyon‑Sol</th>
+        <th>Constitutional / RLHF LLMs</th>
+        <th>Agent Frameworks</th>
+        <th>Decentralized AI Networks</th>
+        <th>Enterprise Guardrails</th>
+        <th>Open‑Source LLMs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Consent Enforceability</strong></td>
+        <td>10</td>
+        <td>4</td>
+        <td>2</td>
+        <td>5</td>
+        <td>6</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Truthfulness Enforcement</strong></td>
+        <td>10</td>
+        <td>5</td>
+        <td>2</td>
+        <td>4</td>
+        <td>6</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Auditability & Traceability</strong></td>
+        <td>9</td>
+        <td>4</td>
+        <td>3</td>
+        <td>5</td>
+        <td>7</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Provenance & Immutability</strong></td>
+        <td>9</td>
+        <td>2</td>
+        <td>3</td>
+        <td>7</td>
+        <td>5</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>Governance Isolation (Fork Safety)</strong></td>
+        <td>9</td>
+        <td>3</td>
+        <td>2</td>
+        <td>4</td>
+        <td>6</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Human Sovereignty</strong></td>
+        <td>10</td>
+        <td>6</td>
+        <td>4</td>
+        <td>5</td>
+        <td>7</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>Safety Routing & Risk Handling</strong></td>
+        <td>9</td>
+        <td>6</td>
+        <td>3</td>
+        <td>4</td>
+        <td>7</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Rule Mutability Control</strong></td>
+        <td>9</td>
+        <td>3</td>
+        <td>2</td>
+        <td>5</td>
+        <td>6</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><strong>Transparency of Constraints</strong></td>
+        <td>9</td>
+        <td>5</td>
+        <td>3</td>
+        <td>4</td>
+        <td>7</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>Failure Mode Predictability</strong></td>
+        <td>8</td>
+        <td>6</td>
+        <td>3</td>
+        <td>4</td>
+        <td>7</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><strong>Operator Exclusion & Revocation</strong></td>
+        <td>9</td>
+        <td>4</td>
+        <td>3</td>
+        <td>6</td>
+        <td>7</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td><strong>Governance Scope Limitation</strong></td>
+        <td>9</td>
+        <td>5</td>
+        <td>3</td>
+        <td>4</td>
+        <td>6</td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>Interpretation:</strong> Elyon‑Sol’s strength signature is the combination of (1) consent enforceability, (2) truth‑policy enforcement, (3) provenance/immutability, and (4) fork/context isolation.
+  </div>
+
+  <h2 class="just">Row‑Level Justifications (one‑liners)</h2>
+  <ul>
+    <li><strong>Consent Enforceability:</strong> Explicit consent required & logged; others often implicit.</li>
+    <li><strong>Truthfulness Enforcement:</strong> Contractual no-role-play/no-hallucination vs tuning/filters.</li>
+    <li><strong>Auditability & Traceability:</strong> Versioned rules + logs; limited internal visibility elsewhere.</li>
+    <li><strong>Provenance & Immutability:</strong> On-chain anchors vs mutable or repo-only histories.</li>
+    <li><strong>Governance Isolation (Fork Safety):</strong> Explicit context boundaries; bleed common elsewhere.</li>
+    <li><strong>Human Sovereignty:</strong> Human authority final & explicit; autonomy creep elsewhere.</li>
+    <li><strong>Safety Routing & Risk Handling:</strong> Formal safety routing vs reactive or hidden moderation.</li>
+    <li><strong>Rule Mutability Control:</strong> Versioned lock states vs silent updates/mutable configs.</li>
+    <li><strong>Transparency of Constraints:</strong> Documented constraints & enforcement; opaque guardrails elsewhere.</li>
+    <li><strong>Failure Mode Predictability:</strong> Defined safe-fail; unstable emergent behavior elsewhere.</li>
+    <li><strong>Operator Exclusion & Revocation:</strong> Rule-based exclusion w/ audit trail; often manual/social.</li>
+    <li><strong>Governance Scope Limitation:</strong> Explicit scope boundaries; scope creep elsewhere.</li>
+  </ul>
+
+  <p class="small">Use note: This scorecard is designed for governance review and audit posture assessment; it is not a benchmark of raw model capability.</p>
+</body>
+</html>
+</div>
+</section>
+
+</body>
+</html>
